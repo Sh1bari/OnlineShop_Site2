@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/OnlineShopSite2Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/JwtRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/CategorySectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/AppError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/GoodDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/JwtRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/JwtResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/RegistrationUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/ResetJwtRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/SectionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Color.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/CompressedPhoto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Photo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Section.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Size.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/Gender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/Newsletter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/PhotoQuality.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/SizeStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/CategoryRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/GoodRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/SectionRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/CategorySectionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityAuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/CategorySectionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/GoodService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/utils/JwtTokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/onlineshop_site2/OnlineShopSite2ApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2VxgNhaDxsqPV2BazCxztuK7Nko" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Theke/Desktop/java/OnlineShop_Site2/src/main/java/com/example/onlineshop_site2",
+    "spring.configuration.checksum": "affd0a2de7d1994610096fc7b34c8ef9"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.onlineshop_site2.models.dtos" />
+      <recent name="com.example.onlineshop_site2.services.security" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2\src\main\java\com\example\onlineshop_site2" />
+      <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2\src\main\java\com\example\onlineshop_site2\models" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.onlineshop_site2.exceptions" />
+      <recent name="com.example.onlineshop_site2.utils" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="OnlineShopSite2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="OnlineShop_Site2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.onlineshop_site2.OnlineShopSite2Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="" />
+      <created>1695783108454</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695783108454</updated>
+      <workItem from="1695783110242" duration="3101000" />
+      <workItem from="1696037125348" duration="7672000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
