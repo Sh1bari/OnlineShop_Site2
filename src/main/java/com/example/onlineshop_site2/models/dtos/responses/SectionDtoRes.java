@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SectionDtoRes {
+    private Long id;
     private String name;
     private List<CategoryDto> categories;
 
@@ -26,6 +27,7 @@ public class SectionDtoRes {
 
         }
         return SectionDtoRes.builder()
+                .id(section.getId())
                 .name(section.getName())
                 .categories(categoryDtoList)
                 .build();
