@@ -5,59 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/OnlineShopSite2Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/CategorySectionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/AppError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/CategoryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/GoodDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/JwtRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/JwtResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/RegistrationUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/ResetJwtRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/SectionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/CompressedPhoto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Photo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Section.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Size.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/Newsletter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/PhotoQuality.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/SizeStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/CategoryRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/GoodRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/SectionRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/CategorySectionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityAuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/CategorySectionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/GoodService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/utils/JwtTokenUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/onlineshop_site2/OnlineShopSite2ApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/OpenApiConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/advice/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/GlobalAppException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/CreateNewSectionReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql scripts/values.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/JwtRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/configs/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/CategorySectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/CategorySectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/SectionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/SectionDtoRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/CompressedPhoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/CompressedPhoto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Photo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Size.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Size.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/GoodRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/GoodRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/CategorySectionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/CategorySectionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/CategorySectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/CategorySectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/GoodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/GoodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,8 +75,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Theke/Desktop/java/OnlineShop_Site2/src/main/java/com/example/onlineshop_site2",
-    "spring.configuration.checksum": "affd0a2de7d1994610096fc7b34c8ef9"
+    "last_opened_file_path": "C:/Users/Theke/Desktop/java/OnlineShop_Site2/src/main/java/com/example/onlineshop_site2/controllers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "affd0a2de7d1994610096fc7b34c8ef9",
+    "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -112,6 +95,8 @@
       <recent name="com.example.onlineshop_site2.services.security" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2\src\main\java\com\example\onlineshop_site2\controllers" />
+      <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2" />
       <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2\src\main\java\com\example\onlineshop_site2" />
       <recent name="C:\Users\Theke\Desktop\java\OnlineShop_Site2\src\main\java\com\example\onlineshop_site2\models" />
     </key>
@@ -139,6 +124,17 @@
       <updated>1695783108454</updated>
       <workItem from="1695783110242" duration="3101000" />
       <workItem from="1696037125348" duration="7672000" />
+      <workItem from="1696085150450" duration="593000" />
+      <workItem from="1696331600547" duration="1214000" />
+      <workItem from="1696440774358" duration="595000" />
+      <workItem from="1696511405848" duration="595000" />
+      <workItem from="1696612293903" duration="2017000" />
+      <workItem from="1697477273440" duration="741000" />
+      <workItem from="1697655655050" duration="1426000" />
+      <workItem from="1698088765124" duration="6871000" />
+      <workItem from="1698347584667" duration="2823000" />
+      <workItem from="1698462724217" duration="6000" />
+      <workItem from="1700186392084" duration="3269000" />
     </task>
     <servers />
   </component>
@@ -155,5 +151,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityUserService.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

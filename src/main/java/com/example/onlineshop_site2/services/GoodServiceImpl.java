@@ -17,14 +17,14 @@ import java.util.List;
 public class GoodServiceImpl implements GoodService {
 
     private final GoodRepo goodRepo;
-    private final Integer limit = 2;
+    private final Integer limit = 30;
 
 
     @Override
-    public List<GoodDto> getGoodsByCategoryIdWithPage(Long categoryId, Integer page) {
-        Pageable pageable = PageRequest.of(page-1, limit);
-        Slice<Good> goodPage = goodRepo.findAllByCategories_id(categoryId, pageable);
-        return goodPage.map(GoodDto::mapToGoodDto).toList();
+    public Page<GoodDto> getGoodsByCategoryIdWithPage(Long categoryId, Integer page) {
+        Pageable pageable = PageRequest.of(page, limit);
+        Page<Good> goodPage = goodRepo.findAllByCategories_id(categoryId, pageable);
+        return goodPage.map(GoodDto::mapToGoodDto);
     }
 
     @Override

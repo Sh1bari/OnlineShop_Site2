@@ -1,5 +1,5 @@
 package com.example.onlineshop_site2.models.entities;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.onlineshop_site2.models.entities;
 
 import lombok.Data;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -17,10 +17,5 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "roles_users",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "users_id"))
-    private List<User> users;
 
 }

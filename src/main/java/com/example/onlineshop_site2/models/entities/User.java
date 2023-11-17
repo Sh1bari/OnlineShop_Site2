@@ -2,7 +2,7 @@ package com.example.onlineshop_site2.models.entities;
 
 import com.example.onlineshop_site2.models.enums.Gender;
 import com.example.onlineshop_site2.models.enums.Newsletter;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -35,7 +35,8 @@ public class User {
 
     private String state;
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "user_id"))
     private List<Role> roles;
 
     private String city;

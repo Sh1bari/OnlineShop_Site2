@@ -3,6 +3,7 @@ package com.example.onlineshop_site2.configs;
 import com.example.onlineshop_site2.services.security.SecurityUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,8 +18,24 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
+@Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
+
+    private static final String[] WHITE_LIST_URL = {
+            "/api/v1/auth/**",
+            "/v2/api-docs",
+            "/v3/api-docs",
+            "/v3/api-docs/**",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/swagger-ui.html"
+    };
+
     private SecurityUserService userService;
     private JwtRequestFilter jwtRequestFilter;
 
@@ -37,7 +54,8 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .cors().disable()
-                .authorizeRequests()
+                .authorizeHttpRequests()
+                .requestMatchers(WHITE_LIST_URL).permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -65,4 +83,5 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
 }
