@@ -1,5 +1,6 @@
-package com.example.onlineshop_site2.models.dtos;
+package com.example.onlineshop_site2.models.dtos.responses;
 
+import com.example.onlineshop_site2.models.dtos.CategoryDto;
 import com.example.onlineshop_site2.models.entities.Section;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

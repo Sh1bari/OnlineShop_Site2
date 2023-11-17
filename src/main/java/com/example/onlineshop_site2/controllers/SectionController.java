@@ -1,6 +1,6 @@
 package com.example.onlineshop_site2.controllers;
 
-import com.example.onlineshop_site2.models.dtos.SectionDtoRes;
+import com.example.onlineshop_site2.models.dtos.responses.SectionDtoRes;
 import com.example.onlineshop_site2.models.dtos.requests.CreateNewSectionReq;
 import com.example.onlineshop_site2.services.service.SectionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,7 +21,6 @@ import java.util.List;
 
 
 @RestController
-
 @Validated
 @RequiredArgsConstructor
 @RequestMapping("/sections")

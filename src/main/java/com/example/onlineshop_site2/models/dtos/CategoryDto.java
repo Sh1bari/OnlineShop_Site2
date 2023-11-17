@@ -21,4 +21,10 @@ public class CategoryDto {
                 .build()));
         return categoryDtoList;
     }
+    public static CategoryDto mapFromEntity(Category category){
+        return CategoryDto.builder()
+                .id(category.getId())
+                .name(category.getName())
+                .build();
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.onlineshop_site2.services;
 
-import com.example.onlineshop_site2.models.dtos.CategoryDto;
-import com.example.onlineshop_site2.models.dtos.SectionDtoRes;
+import com.example.onlineshop_site2.models.dtos.responses.SectionDtoRes;
 import com.example.onlineshop_site2.models.dtos.requests.CreateNewSectionReq;
 import com.example.onlineshop_site2.models.entities.Section;
 import com.example.onlineshop_site2.repositories.SectionRepo;

@@ -1,7 +1,8 @@
 package com.example.onlineshop_site2.controllers;
 
+import com.example.onlineshop_site2.models.dtos.CategoryDto;
 import com.example.onlineshop_site2.models.dtos.GoodDto;
-import com.example.onlineshop_site2.services.service.GoodService;
+import com.example.onlineshop_site2.services.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,32 +10,31 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.constraints.Min;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequiredArgsConstructor
-@SecurityRequirement(name = "bearerAuth")
-@RequestMapping("/goods")
 @Validated
-public class GoodController {
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/categories")
+@SecurityRequirement(name = "bearerAuth")
+public class CategoryController {
+    private final CategoryService categoryService;
 
-    private final GoodService goodService;
-    @Operation(summary = "Получить товары по категории (пагинация)")
+    @Operation(summary = "Получить категорию по id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Application found",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = GoodDto.class))})
+                            schema = @Schema(implementation = CategoryDto.class))})
     })
-    @GetMapping("")
-    public ResponseEntity<Page<GoodDto>> getGoods(@RequestParam("categoryId")@Min(value = 1L, message = "Id cant be less than 1") Long categoryId,
-                                                  @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page){
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryDto> getCategoryById(
+            @PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 0") Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(goodService.getGoodsByCategoryIdWithPage(categoryId, page));
+                .body(categoryService.getCategoryById(id));
     }
 }
