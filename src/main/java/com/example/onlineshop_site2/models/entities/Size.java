@@ -2,15 +2,14 @@ package com.example.onlineshop_site2.models.entities;
 
 
 import com.example.onlineshop_site2.models.enums.SizeStatus;
+import com.example.onlineshop_site2.models.enums.SizeType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "sizes")
@@ -24,8 +23,15 @@ public class Size {
     @Enumerated(EnumType.STRING)
     private SizeStatus sizeStatus;
 
+    @Enumerated(EnumType.STRING)
+    private SizeType sizeType;
+
     @ManyToOne
     @JoinColumn(name = "good_id")
     private Good good;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id")
+    private Color color;
 
 }

@@ -3,10 +3,7 @@ package com.example.onlineshop_site2.models.entities;
 import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "goods")
@@ -28,6 +26,7 @@ public class Good {
 
     private String compound;
 
+
     @JsonIgnore
     @ManyToMany(mappedBy = "goods", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Category> categories;
@@ -40,4 +39,9 @@ public class Good {
 
     @OneToMany(mappedBy = "good", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Photo> photos;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "back_color_id")
+    private Color backColor;
+
 }

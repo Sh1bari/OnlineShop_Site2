@@ -1,9 +1,7 @@
 package com.example.onlineshop_site2.controllers;
 
 import com.example.onlineshop_site2.models.dtos.CategoryDto;
-import com.example.onlineshop_site2.models.dtos.GoodDto;
 import com.example.onlineshop_site2.models.dtos.requests.CategoryCreateReq;
-import com.example.onlineshop_site2.models.dtos.responses.SectionDtoRes;
 import com.example.onlineshop_site2.services.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
