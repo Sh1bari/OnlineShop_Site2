@@ -38,18 +38,18 @@ public class SecurityUserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(
-                String.format("Пользователь '%s' не найден", username)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(
+                String.format("Пользователь '%s' не найден", email)
         ));
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
+                user.getEmail(),
                 user.getPassword(),
                 user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList())
         );
@@ -59,8 +59,16 @@ public class SecurityUserService implements UserDetailsService {
         User user = new User();
         user.setPassword(passwordEncoder.encode(registrationUserDto.getPassword()));
         user.setEmail(registrationUserDto.getEmail());
-        user.setUsername(registrationUserDto.getUsername());
         user.setRoles(List.of(roleService.getUserRole()));
+        user.setFirstName(registrationUserDto.getFirstName());
+        user.setLastName(registrationUserDto.getLastName());
+        user.setGender(registrationUserDto.getGender());
+        user.setDOB(registrationUserDto.getDOB());
+        user.setCountry(registrationUserDto.getCountry());
+        user.setState(registrationUserDto.getState());
+        user.setCity(registrationUserDto.getCity());
+        user.setPhone(registrationUserDto.getPhone());
+        user.setNewsletter(registrationUserDto.getNewsletter());
         return userRepository.save(user);
     }
 }

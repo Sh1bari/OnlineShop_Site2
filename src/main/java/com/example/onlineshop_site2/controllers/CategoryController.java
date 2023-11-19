@@ -52,4 +52,5 @@ public class CategoryController {
                 .status(HttpStatus.OK)
                 .body(categoryService.addCategory(req));
     }
+
 }

@@ -27,9 +27,12 @@ public class Good {
     private String compound;
 
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "goods", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Category> categories;
+    @ToString.Exclude
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "categories_goods",
+            joinColumns = @JoinColumn(name = "good_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories = new ArrayList<>();
 
     @OneToMany(mappedBy = "good", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Color> colors;

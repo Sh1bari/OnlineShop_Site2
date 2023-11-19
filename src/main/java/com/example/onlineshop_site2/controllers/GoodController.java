@@ -1,6 +1,7 @@
 package com.example.onlineshop_site2.controllers;
 
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
+import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
 import com.example.onlineshop_site2.models.entities.Good;
 import com.example.onlineshop_site2.services.service.GoodService;
@@ -18,6 +19,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,6 +53,16 @@ public class GoodController {
     public ResponseEntity<GoodResDto> addGoodToSection(
             @RequestBody @Valid GoodCreateReq req){
         GoodResDto res = goodService.createGood(req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @PatchMapping("/good/{id}/categories")
+    public ResponseEntity<List<CategoryIdRes>> connectCategoryToGood(
+            @PathVariable(name = "id") Long id,
+            @RequestBody List<CategoryIdReq> req){
+        List<CategoryIdRes> res = goodService.connectCategoryToGood(id, req);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(res);
