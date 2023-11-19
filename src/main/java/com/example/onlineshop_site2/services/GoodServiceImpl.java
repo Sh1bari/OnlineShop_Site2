@@ -46,6 +46,16 @@ public class GoodServiceImpl implements GoodService {
         Page<Good> goodPage = goodRepo.findAllByCategories_id(categoryId, pageable);
         return goodPage.map(GoodResDto::mapFromEntity);
     }
+    public Page<GoodResDto> getFreeGoodsPage(Integer page) {
+        Pageable pageable = PageRequest.of(page, limit);
+        Page<Good> goodPage = goodRepo.findByCategoriesIsEmpty(pageable);
+        return goodPage.map(GoodResDto::mapFromEntity);
+    }
+    public GoodResDto getGoodById(Long id) {
+        Good good = goodRepo.findById(id)
+                .orElseThrow(()-> new GoodNotFoundException(id));
+        return GoodResDto.mapFromEntity(good);
+    }
 
     @Override
     public Integer getAmountOfGoodPages() {

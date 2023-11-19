@@ -43,6 +43,19 @@ public class GoodController {
                 .status(HttpStatus.OK)
                 .body(goodService.getGoodsByCategoryIdWithPage(id, page));
     }
+    @Operation(summary = "Получить товары по айди")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Все товары",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @GetMapping("/good/{id}")
+    public ResponseEntity<GoodResDto> getGood(
+            @PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(goodService.getGoodById(id));
+    }
     @Operation(summary = "Создать товар")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Товар создан",
@@ -53,6 +66,20 @@ public class GoodController {
     public ResponseEntity<GoodResDto> addGoodToSection(
             @RequestBody @Valid GoodCreateReq req){
         GoodResDto res = goodService.createGood(req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+    @Operation(summary = "Получить товары без категории (пагинация)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Все товары",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @GetMapping("/goods/free")
+    public ResponseEntity<Page<GoodResDto>> getFreeGoods(
+            @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page){
+        Page<GoodResDto> res = goodService.getFreeGoodsPage(page);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(res);
@@ -122,4 +149,5 @@ public class GoodController {
                 .status(HttpStatus.OK)
                 .body(res);
     }
+
 }

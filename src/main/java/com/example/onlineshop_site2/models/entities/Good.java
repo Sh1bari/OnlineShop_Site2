@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,6 +26,9 @@ public class Good {
     private String description;
 
     private String compound;
+
+    @OneToMany(mappedBy = "good", cascade = CascadeType.ALL)
+    private Set<UserBag> wishlists;
 
 
     @ToString.Exclude

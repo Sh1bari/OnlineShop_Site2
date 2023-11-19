@@ -2,6 +2,7 @@ package com.example.onlineshop_site2.models.dtos.responses;
 
 import com.example.onlineshop_site2.models.dtos.requests.ColorDtoReq;
 import com.example.onlineshop_site2.models.dtos.requests.SizeDtoReq;
+import com.example.onlineshop_site2.models.entities.Color;
 import com.example.onlineshop_site2.models.entities.Good;
 import com.example.onlineshop_site2.models.entities.Photo;
 import com.example.onlineshop_site2.models.enums.ColorType;
@@ -57,12 +58,17 @@ public class GoodResDto {
                     .collect(Collectors.toList());
         }catch (Exception e){}
 
+        BackColorDtoRes backColor = null;
+        try{
+            backColor = BackColorDtoRes.mapFromEntity(goodEntity.getBackColor());
+        }catch (Exception e){}
+
         return GoodResDto.builder()
                 .id(goodEntity.getId())
                 .name(goodEntity.getName())
                 .description(goodEntity.getDescription())
                 .compound(goodEntity.getCompound())
-                .backColor(BackColorDtoRes.mapFromEntity(goodEntity.getBackColor()))
+                .backColor(backColor)
                 .categoryIds(categoryIdRes)
                 .colors(colorDtoResList)
                 .sizes(sizeDtoResList)

@@ -7,6 +7,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -48,4 +49,12 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Newsletter newsletter;
+
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "user_id"))
+    private Set<Good> wishlist;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserBag> bag;
+
 }
