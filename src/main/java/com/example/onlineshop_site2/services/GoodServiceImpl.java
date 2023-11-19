@@ -1,18 +1,23 @@
 package com.example.onlineshop_site2.services;
 
-import com.example.onlineshop_site2.controllers.CategoryIdReq;
+import com.example.onlineshop_site2.controllers.GoodAddColorReq;
+import com.example.onlineshop_site2.controllers.GoodAddSizeReq;
+import com.example.onlineshop_site2.controllers.GoodUpdateReq;
+import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
 import com.example.onlineshop_site2.exceptions.CategoryNotFoundException;
 import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
-import com.example.onlineshop_site2.models.entities.Category;
-import com.example.onlineshop_site2.models.entities.Color;
-import com.example.onlineshop_site2.models.entities.Good;
+import com.example.onlineshop_site2.models.entities.*;
+import com.example.onlineshop_site2.models.enums.ColorType;
 import com.example.onlineshop_site2.repositories.CategoryRepo;
+import com.example.onlineshop_site2.repositories.ColorRepo;
 import com.example.onlineshop_site2.repositories.GoodRepo;
 import com.example.onlineshop_site2.repositories.SizeRepo;
 import com.example.onlineshop_site2.services.service.GoodService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +38,7 @@ public class GoodServiceImpl implements GoodService {
     private final CategoryRepo categoryRepo;
     private final SizeRepo sizeRepo;
     private final Integer limit = 30;
+    private final ColorRepo colorRepo;
 
 
     @Override
@@ -46,7 +53,6 @@ public class GoodServiceImpl implements GoodService {
         return (int) Math.ceil((double) goodRepo.count() / limit);
     }
 
-    @Transactional
     @Override
     public GoodResDto createGood(GoodCreateReq req) {
         Good res = goodRepo.save(req.mapToEntity());
@@ -55,9 +61,82 @@ public class GoodServiceImpl implements GoodService {
             s.setGood(res);
             sizeRepo.save(s);
         }));
-        res.getBackColor().setGood(res);
         return GoodResDto.mapFromEntity(res);
     }
+
+    @Transactional
+    @Override
+    public GoodResDto updateGood(Long id, GoodUpdateReq req) {
+        // Найти товар по id
+        Good existingGood = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        Good newGood = req.mapToEntity();
+        existingGood.setName(newGood.getName());
+        existingGood.setDescription(newGood.getDescription());
+        existingGood.setCompound(newGood.getCompound());
+        existingGood.getColors().forEach(o->{
+            if(o.getColorType().equals(ColorType.BACKGROUND)){
+                colorRepo.deleteByIdNative(o.getId());
+            }
+        });
+        Color color = newGood.getBackColor();
+        color.setGood(existingGood);
+        color.setGoodBackColor(existingGood);
+        colorRepo.save(color);
+        existingGood.setBackColor(color);
+        goodRepo.save(existingGood);
+
+        return GoodResDto.mapFromEntity(existingGood);
+    }
+
+    @Transactional
+    public GoodResDto putSizes(Long id, GoodAddSizeReq req){
+        Good existingGood = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        Good newGood = req.mapToEntity();
+        sizeRepo.saveAll(newGood.getSizes());
+        existingGood.getSizes().clear();
+        existingGood.getSizes().addAll(newGood.getSizes());
+        existingGood.getSizes().forEach(o->o.setGood(existingGood));
+        goodRepo.save(existingGood);
+        return GoodResDto.mapFromEntity(existingGood);
+    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Transactional
+    public GoodResDto putColors(Long id, GoodAddColorReq req) throws InterruptedException {
+        Good existingGood = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        Good newGood = req.mapToEntity();
+
+        existingGood.getColors().forEach(o->{
+            if(o.getColorType().equals(ColorType.WITH_SIZE)) {
+                o.getSizes().forEach(s->{
+                    sizeRepo.deleteByIdNative(s.getId());
+                });
+                colorRepo.deleteByIdNative(o.getId());
+            }
+        });
+
+        newGood.getColors().forEach(o->{
+            o.setGood(existingGood);
+            colorRepo.save(o);
+            o.getSizes().forEach(s->{
+                s.setColor(o);
+                s.setGood(existingGood);
+                sizeRepo.save(s);
+            });
+        });
+
+        entityManager.clear();
+
+        Good res = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+
+        return GoodResDto.mapFromEntity(res);
+    }
+
 
     @Override
     public List<CategoryIdRes> connectCategoryToGood(Long id, List<CategoryIdReq> req) {

@@ -1,4 +1,4 @@
-package com.example.onlineshop_site2.controllers;
+package com.example.onlineshop_site2.models.dtos.requests;
 
 import lombok.*;
 

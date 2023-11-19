@@ -34,17 +34,17 @@ public class Good {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories = new ArrayList<>();
 
-    @OneToMany(mappedBy = "good", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Color> colors;
+    @OneToMany(mappedBy = "good", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    private List<Color> colors = new ArrayList<>();
 
-    @OneToMany(mappedBy = "good", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Size> sizes;
+    @OneToMany(mappedBy = "good", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    private List<Size> sizes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "good", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Photo> photos;
+    @OneToMany(mappedBy = "good", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    private List<Photo> photos = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "back_color_id")
+
+    @OneToOne(mappedBy = "goodBackColor", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval = true)
     private Color backColor;
 
 }

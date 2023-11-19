@@ -1,9 +1,10 @@
 package com.example.onlineshop_site2.controllers;
 
+import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
-import com.example.onlineshop_site2.models.entities.Good;
+import com.example.onlineshop_site2.services.GoodServiceImpl;
 import com.example.onlineshop_site2.services.service.GoodService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,7 +30,7 @@ import java.util.List;
 @Validated
 public class GoodController {
 
-    private final GoodService goodService;
+    private final GoodServiceImpl goodService;
     @Operation(summary = "Получить товары по категории (пагинация)")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Все товары",
@@ -58,7 +59,56 @@ public class GoodController {
                 .body(res);
     }
 
-    @PatchMapping("/good/{id}/categories")
+    @Operation(summary = "Обновить инфу о товаре")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар обновлен",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @PutMapping("/good/{id}/info")
+    public ResponseEntity<GoodResDto> updateGoodInfo(
+            @PathVariable(name = "id")Long id,
+            @RequestBody @Valid GoodUpdateReq req){
+        GoodResDto res = goodService.updateGood(id, req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @Operation(summary = "Обновить размеры товара")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар обновлен",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @PutMapping("/good/{id}/sizes")
+    public ResponseEntity<GoodResDto> updateGoodSizes(
+            @PathVariable(name = "id")Long id,
+            @RequestBody @Valid GoodAddSizeReq req){
+        GoodResDto res = goodService.putSizes(id, req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @PutMapping("/good/{id}/colors")
+    public ResponseEntity<GoodResDto> updateGoodColors(
+            @PathVariable(name = "id")Long id,
+            @RequestBody @Valid GoodAddColorReq req) throws InterruptedException {
+        GoodResDto res = goodService.putColors(id, req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+
+    @Operation(summary = "Привязать товар к категории")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "айди товаров",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = CategoryIdRes.class))})
+    })
+    @PutMapping("/good/{id}/categories")
     public ResponseEntity<List<CategoryIdRes>> connectCategoryToGood(
             @PathVariable(name = "id") Long id,
             @RequestBody List<CategoryIdReq> req){

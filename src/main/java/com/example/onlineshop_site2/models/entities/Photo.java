@@ -26,7 +26,7 @@ public class Photo {
     @JoinColumn(name = "good_id")
     private Good good;
 
-    @OneToMany(mappedBy = "photo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "photo", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<CompressedPhoto> compressedPhotos;
 
 }

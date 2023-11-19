@@ -22,16 +22,17 @@ public class Color {
     private String code;
     @Enumerated(EnumType.STRING)
     private ColorType colorType;
-    @OneToOne(mappedBy = "backColor", orphanRemoval = true)
-    private Good backColorFor;
-
 
     @ManyToOne
     @JoinColumn(name = "good_id")
     private Good good;
 
-    @OneToMany(mappedBy = "color", orphanRemoval = true)
+    @OneToMany(mappedBy = "color", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<Size> sizes;
 
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "good_back_color_id")
+    private Good goodBackColor;
 
 }

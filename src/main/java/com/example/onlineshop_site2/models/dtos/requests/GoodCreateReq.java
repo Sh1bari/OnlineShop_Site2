@@ -7,6 +7,7 @@ import com.example.onlineshop_site2.models.entities.Size;
 import com.example.onlineshop_site2.models.enums.SizeType;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,8 @@ public class GoodCreateReq {
                 .name(name)
                 .description(description)
                 .compound(compound)
+                .categories(new ArrayList<>())
+                .photos(new ArrayList<>())
                 .backColor(backColor.mapToEntity())
                 .colors(colors.stream().map(o->o.mapToEntity()).toList())
                 .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
@@ -45,6 +48,7 @@ public class GoodCreateReq {
             o.setGood(build);
             o.setSizeType(SizeType.SIZE);
         });
+        build.getBackColor().setGoodBackColor(build);
         build.getBackColor().setGood(build);
         return build;
     }
