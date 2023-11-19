@@ -22,6 +22,7 @@ import java.util.List;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequiredArgsConstructor
 @RequestMapping("/sections")
 @SecurityRequirement(name = "bearerAuth")

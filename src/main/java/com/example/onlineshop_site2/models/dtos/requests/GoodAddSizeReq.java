@@ -1,7 +1,6 @@
-package com.example.onlineshop_site2.controllers;
+package com.example.onlineshop_site2.models.dtos.requests;
 
-import com.example.onlineshop_site2.models.dtos.requests.ColorDtoReq;
-import com.example.onlineshop_site2.models.entities.Color;
+import com.example.onlineshop_site2.models.dtos.requests.SizeDtoReq;
 import com.example.onlineshop_site2.models.entities.Good;
 import com.example.onlineshop_site2.models.enums.SizeType;
 import lombok.*;
@@ -18,15 +17,15 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoodAddColorReq {
-    private List<ColorDtoReq> colors;
-
+public class GoodAddSizeReq {
+    private List<SizeDtoReq> sizes;
     public Good mapToEntity(){
-        List<Color> colors1 = new ArrayList<>();
-        colors.forEach(o->colors1.add(o.mapToEntity()));
         Good build = Good.builder()
-                .colors(colors1)
+                .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
                 .build();
+        build.getSizes().forEach(o->{
+            o.setSizeType(SizeType.SIZE);
+        });
         return build;
     }
 }

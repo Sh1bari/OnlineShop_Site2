@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "bearerAuth")
 @RequestMapping("")
 @Validated
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;

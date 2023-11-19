@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin
 @RequestMapping("/categories")
 @SecurityRequirement(name = "bearerAuth")
 public class CategoryController {

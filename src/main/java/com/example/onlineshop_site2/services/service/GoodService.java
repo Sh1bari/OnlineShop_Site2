@@ -1,6 +1,6 @@
 package com.example.onlineshop_site2.services.service;
 
-import com.example.onlineshop_site2.controllers.GoodUpdateReq;
+import com.example.onlineshop_site2.models.dtos.requests.GoodUpdateReq;
 import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;

@@ -1,8 +1,8 @@
 package com.example.onlineshop_site2.services;
 
-import com.example.onlineshop_site2.controllers.GoodAddColorReq;
-import com.example.onlineshop_site2.controllers.GoodAddSizeReq;
-import com.example.onlineshop_site2.controllers.GoodUpdateReq;
+import com.example.onlineshop_site2.models.dtos.requests.GoodAddColorReq;
+import com.example.onlineshop_site2.models.dtos.requests.GoodAddSizeReq;
+import com.example.onlineshop_site2.models.dtos.requests.GoodUpdateReq;
 import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
 import com.example.onlineshop_site2.exceptions.CategoryNotFoundException;
 import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
@@ -27,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service

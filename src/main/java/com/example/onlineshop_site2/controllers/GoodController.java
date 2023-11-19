@@ -1,11 +1,9 @@
 package com.example.onlineshop_site2.controllers;
 
-import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
-import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
+import com.example.onlineshop_site2.models.dtos.requests.*;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
 import com.example.onlineshop_site2.services.GoodServiceImpl;
-import com.example.onlineshop_site2.services.service.GoodService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,6 +26,7 @@ import java.util.List;
 @SecurityRequirement(name = "bearerAuth")
 @RequestMapping("")
 @Validated
+@CrossOrigin
 public class GoodController {
 
     private final GoodServiceImpl goodService;
