@@ -118,21 +118,22 @@ public class GoodServiceImpl implements GoodService {
                 colorRepo.deleteByIdNative(o.getId());
             }
         });
-
-        newGood.getColors().forEach(o->{
-            o.setGood(existingGood);
-            colorRepo.save(o);
-            o.getSizes().forEach(s->{
-                s.setColor(o);
-                s.setGood(existingGood);
-                sizeRepo.save(s);
-            });
-        });
-
         entityManager.clear();
 
         Good res = goodRepo.findById(id)
                 .orElseThrow(() -> new GoodNotFoundException(id));
+
+        newGood.getColors().forEach(o->{
+            o.setGood(res);
+            Color saved = colorRepo.save(o);
+            o.getSizes().forEach(s->{
+                Size size = s;
+                size.setColor(saved);
+                size.setGood(res);
+                sizeRepo.save(size);
+            });
+        });
+
 
         return GoodResDto.mapFromEntity(res);
     }

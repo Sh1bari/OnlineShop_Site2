@@ -26,11 +26,11 @@ public class Size {
     @Enumerated(EnumType.STRING)
     private SizeType sizeType;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "good_id")
     private Good good;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "color_id")
     private Color color;
 
