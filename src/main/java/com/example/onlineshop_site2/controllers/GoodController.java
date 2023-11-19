@@ -91,6 +91,12 @@ public class GoodController {
                 .body(res);
     }
 
+    @Operation(summary = "Обновить цвета товара")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар обновлен",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
     @PutMapping("/good/{id}/colors")
     public ResponseEntity<GoodResDto> updateGoodColors(
             @PathVariable(name = "id")Long id,
