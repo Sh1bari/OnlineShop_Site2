@@ -78,22 +78,25 @@ public class GoodServiceImpl implements GoodService {
         // Найти товар по id
         Good existingGood = goodRepo.findById(id)
                 .orElseThrow(() -> new GoodNotFoundException(id));
-        Good newGood = req.mapToEntity();
-        existingGood.setName(newGood.getName());
-        existingGood.setDescription(newGood.getDescription());
-        existingGood.setCompound(newGood.getCompound());
-        existingGood.getColors().forEach(o->{
-            if(o.getColorType().equals(ColorType.BACKGROUND)){
-                colorRepo.deleteByIdNative(o.getId());
-            }
-        });
-        existingGood.getColors().removeIf(o->o.getColorType().equals(ColorType.BACKGROUND));
-        Color color = newGood.getBackColor();
+
+        // Удалить все Color с типом BACKGROUND
+        existingGood.getColors().removeIf(o -> o.getColorType().equals(ColorType.BACKGROUND));
+
+        // Создать новый Color из запроса
+        Color color = req.getBackColor().mapToEntity();
         color.setGood(existingGood);
         color.setGoodBackColor(existingGood);
-        colorRepo.save(color);
+
+        // Добавить новый Color в коллекцию
         existingGood.getColors().add(color);
-        existingGood.setBackColor(color);
+
+        // Обновить остальные поля товара
+        existingGood.setName(req.getName());
+        existingGood.setDescription(req.getDescription());
+        existingGood.setCompound(req.getCompound());
+        existingGood.setCost(req.getCost());
+
+        // Сохранить изменения в базе данных
         goodRepo.save(existingGood);
 
         return GoodResDto.mapFromEntity(existingGood);
