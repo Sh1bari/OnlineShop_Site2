@@ -27,6 +27,8 @@ public class Good {
 
     private String compound;
 
+    private Double cost;
+
     @OneToMany(mappedBy = "good", cascade = CascadeType.ALL)
     private Set<UserBag> wishlists;
 

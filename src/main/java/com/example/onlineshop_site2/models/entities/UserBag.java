@@ -1,12 +1,8 @@
 package com.example.onlineshop_site2.models.entities;
 
-import com.example.onlineshop_site2.models.dtos.responses.GoodIdsRes;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Description:
@@ -30,6 +26,10 @@ public class UserBag {
     @ManyToOne
     @JoinColumn(name = "good_id")
     private Good good;
+
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    @JoinColumn(name = "size_id")
+    private Size size;
 
     private Integer amount;
 

@@ -1,10 +1,9 @@
-package com.example.onlineshop_site2.services.service;
+package com.example.onlineshop_site2.models.dtos;
 
 import com.example.onlineshop_site2.models.dtos.responses.GoodIdsRes;
 
 import com.example.onlineshop_site2.models.dtos.responses.UserBagRes;
 import com.example.onlineshop_site2.models.entities.User;
-import com.example.onlineshop_site2.models.entities.UserBag;
 import com.example.onlineshop_site2.models.enums.Gender;
 import com.example.onlineshop_site2.models.enums.Newsletter;
 import lombok.*;

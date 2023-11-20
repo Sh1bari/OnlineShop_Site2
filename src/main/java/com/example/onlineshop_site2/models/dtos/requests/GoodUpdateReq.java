@@ -23,6 +23,8 @@ public class GoodUpdateReq {
 
     private String compound;
 
+    private Double cost;
+
     private BackColorDtoReq backColor;
 
     public Good mapToEntity() {
@@ -30,6 +32,7 @@ public class GoodUpdateReq {
                 .name(name)
                 .description(description)
                 .compound(compound)
+                .cost(cost)
                 .backColor(backColor.mapToEntity())
                 .build();
         build.getBackColor().setGoodBackColor(build);

@@ -23,11 +23,14 @@ public class UserBagRes {
 
     private Long goodId;
 
+    private Long sizeId;
+
     private Integer amount;
     public static UserBagRes mapFromEntity(UserBag userBag){
         return UserBagRes.builder()
                 .id(userBag.getId())
                 .goodId(userBag.getGood().getId())
+                .sizeId(userBag.getSize().getId())
                 .amount(userBag.getAmount())
                 .build();
     }
@@ -38,6 +41,7 @@ public class UserBagRes {
             res.add(UserBagRes.builder()
                     .id(o.getId())
                     .goodId(o.getGood().getId())
+                    .sizeId(o.getSize().getId())
                     .amount(o.getAmount())
                     .build());
         });

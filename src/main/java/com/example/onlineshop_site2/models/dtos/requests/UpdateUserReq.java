@@ -1,4 +1,4 @@
-package com.example.onlineshop_site2.services.service;
+package com.example.onlineshop_site2.models.dtos.requests;
 
 import com.example.onlineshop_site2.models.entities.User;
 import com.example.onlineshop_site2.models.enums.Gender;

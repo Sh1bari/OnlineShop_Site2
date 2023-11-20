@@ -22,6 +22,7 @@ public class GoodResDto {
     private String description;
 
     private String compound;
+    private Double cost;
 
     private BackColorDtoRes backColor;
 
@@ -65,6 +66,7 @@ public class GoodResDto {
 
         return GoodResDto.builder()
                 .id(goodEntity.getId())
+                .cost(goodEntity.getCost())
                 .name(goodEntity.getName())
                 .description(goodEntity.getDescription())
                 .compound(goodEntity.getCompound())

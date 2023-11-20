@@ -14,5 +14,5 @@ import lombok.*;
 @AllArgsConstructor
 public class UserBagIdReq {
     @Min(value = 1, message = "id cant be less than 1")
-    private Long goodId;
+    private Long id;
 }

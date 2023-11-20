@@ -16,6 +16,9 @@ public class UserBagReq {
     @Min(value = 1, message = "id cant be less than 1")
     private Long goodId;
 
+    @Min(value = 1, message = "id cant be less than 1")
+    private Long sizeId;
+
     @Min(value = 1, message = "Amount cant be less than 1")
     private Integer amount;
 

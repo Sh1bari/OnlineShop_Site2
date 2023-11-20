@@ -1,17 +1,19 @@
 package com.example.onlineshop_site2.services.service;
 
-import com.example.onlineshop_site2.exceptions.GoodIdNotUniqueException;
-import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
-import com.example.onlineshop_site2.exceptions.UserNotFoundException;
+import com.example.onlineshop_site2.exceptions.*;
+import com.example.onlineshop_site2.models.dtos.UserResDto;
 import com.example.onlineshop_site2.models.dtos.requests.GoodIdsReq;
+import com.example.onlineshop_site2.models.dtos.requests.UpdateUserReq;
 import com.example.onlineshop_site2.models.dtos.requests.UserBagIdReq;
 import com.example.onlineshop_site2.models.dtos.requests.UserBagReq;
 import com.example.onlineshop_site2.models.dtos.responses.GoodIdsRes;
 import com.example.onlineshop_site2.models.dtos.responses.UserBagRes;
 import com.example.onlineshop_site2.models.entities.Good;
+import com.example.onlineshop_site2.models.entities.Size;
 import com.example.onlineshop_site2.models.entities.User;
 import com.example.onlineshop_site2.models.entities.UserBag;
 import com.example.onlineshop_site2.repositories.GoodRepo;
+import com.example.onlineshop_site2.repositories.SizeRepo;
 import com.example.onlineshop_site2.repositories.UserBagRepo;
 import com.example.onlineshop_site2.repositories.UserRepository;
 import lombok.*;
@@ -32,6 +34,7 @@ public class UserService {
     private final UserRepository userRepo;
     private final GoodRepo goodRepo;
     private final UserBagRepo userBagRepo;
+    private final SizeRepo sizeRepo;
 
     public UserResDto updateUser(Long id, UpdateUserReq req){
         User user = userRepo.findById(id)
@@ -87,8 +90,12 @@ public class UserService {
         Good good = goodRepo.findById(req.getGoodId())
                 .orElseThrow(() -> new GoodNotFoundException(req.getGoodId()));
 
+        Size size = sizeRepo.findById(req.getSizeId())
+                .orElseThrow(() -> new SizeNotFoundException(req.getSizeId()));
+
         Optional<UserBag> existingUserBagOptional = user.getBag().stream()
                 .filter(userBag -> userBag.getGood().getId().equals(req.getGoodId()))
+                .filter(userBag -> userBag.getSize().getId().equals(req.getSizeId()))
                 .findFirst();
 
         if (existingUserBagOptional.isPresent()) {
@@ -99,6 +106,7 @@ public class UserService {
         } else {
             // Если записи нет, добавляем новую запись
             UserBag userBag = new UserBag();
+            userBag.setSize(size);
             userBag.setUser(user);
             userBag.setGood(good);
             userBag.setAmount(req.getAmount());
@@ -112,16 +120,10 @@ public class UserService {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(()->new UserNotFoundException("Username with email " + email + " not found"));
 
-        Optional<UserBag> userBagOptional = user.getBag().stream()
-                .filter(userBag -> userBag.getGood().getId().equals(req.getGoodId()))
-                .findFirst();
+        UserBag userBag = userBagRepo.findById(req.getId())
+                        .orElseThrow(()->new UserBagNotFoundException(req.getId()));
 
-        userBagOptional.ifPresent(userBag -> {
-            // Удаляем запись из базы данных через репозиторий
-            userBagRepo.deleteById(userBag.getId());
-            // Удаляем запись из коллекции пользователя
-            user.getBag().remove(userBag);
-        });
+        user.getBag().removeIf(o->o.getId().equals(userBag.getId()));
 
         userRepo.save(user);
 
