@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="фикс сохранения">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/UserBagRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/UserBagRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,7 @@
       <workItem from="1698347584667" duration="2823000" />
       <workItem from="1698462724217" duration="6000" />
       <workItem from="1700186392084" duration="4689000" />
-      <workItem from="1700517209326" duration="3992000" />
+      <workItem from="1700517209326" duration="5139000" />
     </task>
     <task id="LOCAL-00001" summary="подготовил проект">
       <option name="closed" value="true" />
@@ -150,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700521007007</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="фикс сохранения">
+      <option name="closed" value="true" />
+      <created>1700521400585</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700521400585</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,11 +193,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityUserService.java</url>
           <line>71</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

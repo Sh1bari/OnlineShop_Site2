@@ -11,10 +11,7 @@ import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
 import com.example.onlineshop_site2.models.entities.*;
 import com.example.onlineshop_site2.models.enums.ColorType;
-import com.example.onlineshop_site2.repositories.CategoryRepo;
-import com.example.onlineshop_site2.repositories.ColorRepo;
-import com.example.onlineshop_site2.repositories.GoodRepo;
-import com.example.onlineshop_site2.repositories.SizeRepo;
+import com.example.onlineshop_site2.repositories.*;
 import com.example.onlineshop_site2.services.service.GoodService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -36,6 +33,7 @@ public class GoodServiceImpl implements GoodService {
     private final GoodRepo goodRepo;
     private final CategoryRepo categoryRepo;
     private final SizeRepo sizeRepo;
+    private final UserBagRepo userBagRepo;
     private final Integer limit = 30;
     private final ColorRepo colorRepo;
 
@@ -126,11 +124,13 @@ public class GoodServiceImpl implements GoodService {
         existingGood.getColors().forEach(o->{
             if(o.getColorType().equals(ColorType.WITH_SIZE)) {
                 o.getSizes().forEach(s->{
+                    userBagRepo.deleteBySizeId(s.getId());
                     sizeRepo.deleteByIdNative(s.getId());
                 });
                 colorRepo.deleteByIdNative(o.getId());
             }
         });
+
         entityManager.clear();
 
         Good res = goodRepo.findById(id)
