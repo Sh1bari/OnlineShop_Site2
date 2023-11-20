@@ -73,7 +73,6 @@ public class GoodServiceImpl implements GoodService {
         return GoodResDto.mapFromEntity(res);
     }
 
-    @Transactional
     @Override
     public GoodResDto updateGood(Long id, GoodUpdateReq req) {
         // Найти товар по id
@@ -88,10 +87,12 @@ public class GoodServiceImpl implements GoodService {
                 colorRepo.deleteByIdNative(o.getId());
             }
         });
+        existingGood.getColors().removeIf(o->o.getColorType().equals(ColorType.BACKGROUND));
         Color color = newGood.getBackColor();
         color.setGood(existingGood);
         color.setGoodBackColor(existingGood);
         colorRepo.save(color);
+        existingGood.getColors().add(color);
         existingGood.setBackColor(color);
         goodRepo.save(existingGood);
 

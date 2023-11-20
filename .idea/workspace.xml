@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="корзина и вишлист">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/SizeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/SizeNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/UserBagNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/ColorSizeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/SizeColorRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/SizeService.java" afterDir="false" />
+    <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="корзина фикс">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/GoodUpdateReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/GoodUpdateReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/UserBagIdReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/UserBagIdReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/UserBagReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/UserBagReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/GoodResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/GoodResDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/UserBagRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/UserBagRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Good.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/UserBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/UserBag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/UpdateUserReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/UpdateUserReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/UserResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/UserResDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +110,7 @@
       <workItem from="1698347584667" duration="2823000" />
       <workItem from="1698462724217" duration="6000" />
       <workItem from="1700186392084" duration="4689000" />
-      <workItem from="1700517209326" duration="1690000" />
+      <workItem from="1700517209326" duration="3646000" />
     </task>
     <task id="LOCAL-00001" summary="подготовил проект">
       <option name="closed" value="true" />
@@ -151,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700438170785</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="корзина фикс">
+      <option name="closed" value="true" />
+      <created>1700519180713</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700519180713</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +165,8 @@
     <MESSAGE value="подготовил проект" />
     <MESSAGE value="категория" />
     <MESSAGE value="корзина и вишлист" />
-    <option name="LAST_COMMIT_MESSAGE" value="корзина и вишлист" />
+    <MESSAGE value="корзина фикс" />
+    <option name="LAST_COMMIT_MESSAGE" value="корзина фикс" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -181,6 +175,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityUserService.java</url>
           <line>71</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
