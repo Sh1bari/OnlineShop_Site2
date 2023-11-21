@@ -17,7 +17,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SizeDtoReq {
-    private Double size;
+    private String size;
 
     @Enumerated(EnumType.STRING)
     private SizeStatus sizeStatus;

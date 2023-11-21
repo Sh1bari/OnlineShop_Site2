@@ -19,7 +19,7 @@ import lombok.*;
 public class SizeColorRes {
 
     private Long id;
-    private Double size;
+    private String size;
 
     @Enumerated(EnumType.STRING)
     private SizeStatus sizeStatus;

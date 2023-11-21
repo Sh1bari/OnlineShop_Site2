@@ -18,7 +18,7 @@ public class Size {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double size;
+    private String size;
 
     @Enumerated(EnumType.STRING)
     private SizeStatus sizeStatus;

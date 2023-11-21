@@ -1,5 +1,6 @@
 package com.example.onlineshop_site2.models.entities;
 
+import com.example.onlineshop_site2.models.enums.RecordState;
 import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,5 +53,8 @@ public class Good {
 
     @OneToOne(mappedBy = "goodBackColor", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval = true)
     private Color backColor;
+
+    @Enumerated(EnumType.STRING)
+    private RecordState state;
 
 }

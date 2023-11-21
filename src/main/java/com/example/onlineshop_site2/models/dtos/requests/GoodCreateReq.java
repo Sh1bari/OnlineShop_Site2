@@ -4,6 +4,7 @@ import com.example.onlineshop_site2.controllers.GoodController;
 import com.example.onlineshop_site2.models.entities.Color;
 import com.example.onlineshop_site2.models.entities.Good;
 import com.example.onlineshop_site2.models.entities.Size;
+import com.example.onlineshop_site2.models.enums.RecordState;
 import com.example.onlineshop_site2.models.enums.SizeType;
 import lombok.*;
 
@@ -42,6 +43,7 @@ public class GoodCreateReq {
                 .backColor(backColor.mapToEntity())
                 .colors(colors.stream().map(o->o.mapToEntity()).toList())
                 .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
+                .state(RecordState.ACTIVE)
                 .build();
         build.getColors().forEach(o->o.setGood(build));
         build.getSizes().forEach(o->{
