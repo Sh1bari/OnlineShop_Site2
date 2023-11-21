@@ -1,5 +1,6 @@
 package com.example.onlineshop_site2.services.service;
 
+import com.example.onlineshop_site2.exceptions.ApplicationNotFoundException;
 import com.example.onlineshop_site2.exceptions.UserNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.responses.ApplicationRes;
@@ -12,6 +13,8 @@ import com.example.onlineshop_site2.repositories.ApplicationRepo;
 import com.example.onlineshop_site2.repositories.GoodItemRepo;
 import com.example.onlineshop_site2.repositories.UserRepository;
 import lombok.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -32,6 +35,8 @@ public class ApplicationService {
     private final GoodItemRepo goodItemRepo;
     private final UserRepository userRepo;
 
+    private final int limit = 20;
+
     public ApplicationRes createApplication(String email, CreateApplicationReq req){
         User user = userRepo.findByEmail(email)
                 .orElseThrow(()-> new UserNotFoundException(email));
@@ -43,6 +48,31 @@ public class ApplicationService {
         applicationRepo.save(application);
 
         ApplicationRes res = ApplicationRes.mapFromEntity(application);
+        return res;
+    }
+
+    public Page<ApplicationRes> getMyApplications(String email, Integer page){
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(()-> new UserNotFoundException(email));
+
+        Page<ApplicationRes> res = applicationRepo.findAllByUser_id(user.getId(), PageRequest.of(page,limit))
+                        .map(ApplicationRes::mapFromEntity);
+
+        return res;
+    }
+
+    public Page<ApplicationRes> getAllApplications(ApplicationStatus applicationStatus,
+                                                   Integer page){
+        Page<ApplicationRes> res;
+
+        if(applicationStatus == null){
+            res = applicationRepo.findAll(PageRequest.of(page, limit))
+                    .map(ApplicationRes::mapFromEntity);
+        }else{
+            res = applicationRepo.findAllByStatus(applicationStatus, PageRequest.of(page, limit))
+                    .map(ApplicationRes::mapFromEntity);
+        }
+
         return res;
     }
 

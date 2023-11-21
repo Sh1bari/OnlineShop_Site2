@@ -10,6 +10,5 @@ import lombok.*;
 public enum ApplicationStatus {
     FREE,
     DENIED,
-
     ACCESSED
 }
