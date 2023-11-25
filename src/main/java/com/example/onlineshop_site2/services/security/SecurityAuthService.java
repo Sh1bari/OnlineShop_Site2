@@ -6,6 +6,7 @@ import com.example.onlineshop_site2.models.dtos.JwtResponse;
 import com.example.onlineshop_site2.models.dtos.RegistrationUserDto;
 import com.example.onlineshop_site2.models.dtos.UserDto;
 import com.example.onlineshop_site2.models.entities.User;
+import com.example.onlineshop_site2.services.service.EmailService;
 import com.example.onlineshop_site2.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,7 @@ public class SecurityAuthService {
         String token = jwtTokenUtils.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
+    private final EmailService emailService;
 
     public ResponseEntity<?> createNewUser(@RequestBody RegistrationUserDto registrationUserDto) {
         if (!registrationUserDto.getPassword().equals(registrationUserDto.getConfirmPassword())) {
@@ -43,6 +45,13 @@ public class SecurityAuthService {
         if (userService.findByEmail(registrationUserDto.getEmail()).isPresent()) {
             return new ResponseEntity<>(new AppError(HttpStatus.BAD_REQUEST.value(), "Пользователь с указанным именем уже существует"), HttpStatus.BAD_REQUEST);
         }
+        emailService.createCodeDB(registrationUserDto.getEmail());
+        return ResponseEntity.ok().build();
+    }
+
+    public ResponseEntity<?> confirmCode(@RequestBody RegistrationUserDto registrationUserDto,
+                                         String code){
+        emailService.checkCode(registrationUserDto.getEmail(), code);
         User user = userService.createNewUser(registrationUserDto);
         return ResponseEntity.ok(new UserDto(user.getId(), user.getEmail()));
     }

@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="фикс сохранения">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/ApplicationNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/MailNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/WrongCodeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/CodeReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/MessageRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/entities/Mail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/MailRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/EmailService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/ApplicationStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/enums/ApplicationStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/ApplicationRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/ApplicationRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/ApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/ApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/security/SecurityAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -121,8 +127,7 @@
       <workItem from="1698347584667" duration="2823000" />
       <workItem from="1698462724217" duration="6000" />
       <workItem from="1700186392084" duration="4689000" />
-      <workItem from="1700342574574" duration="24833000" />
-      <workItem from="1700367626473" duration="17449000" />
+      <workItem from="1700517209326" duration="9811000" />
     </task>
     <task id="LOCAL-00001" summary="подготовил проект">
       <option name="closed" value="true" />
@@ -140,63 +145,47 @@
       <option name="project" value="LOCAL" />
       <updated>1700190680525</updated>
     </task>
-    <task id="LOCAL-00003" summary="Создание товара">
+    <task id="LOCAL-00003" summary="корзина и вишлист">
       <option name="closed" value="true" />
-      <created>1700352822237</created>
+      <created>1700438170785</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1700352822237</updated>
+      <updated>1700438170785</updated>
     </task>
-    <task id="LOCAL-00004" summary="Создание товара">
+    <task id="LOCAL-00004" summary="корзина фикс">
       <option name="closed" value="true" />
-      <created>1700358966722</created>
+      <created>1700519180713</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1700358966722</updated>
+      <updated>1700519180713</updated>
     </task>
-    <task id="LOCAL-00005" summary="Обновление товара">
+    <task id="LOCAL-00005" summary="фикс сохранения">
       <option name="closed" value="true" />
-      <created>1700381635928</created>
+      <created>1700521007007</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1700381635928</updated>
+      <updated>1700521007007</updated>
     </task>
-    <task id="LOCAL-00006" summary="Обновление товара">
+    <task id="LOCAL-00006" summary="фикс сохранения">
       <option name="closed" value="true" />
-      <created>1700381692688</created>
+      <created>1700521400585</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1700381692688</updated>
+      <updated>1700521400585</updated>
     </task>
-    <task id="LOCAL-00007" summary="Обновление товара">
+    <task id="LOCAL-00007" summary="фикс сохранения">
       <option name="closed" value="true" />
-      <created>1700383552657</created>
+      <created>1700522641246</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1700383552657</updated>
+      <updated>1700522641246</updated>
     </task>
-    <task id="LOCAL-00008" summary="Обновление товара">
-      <option name="closed" value="true" />
-      <created>1700420559154</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1700420559154</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Обновление товара">
-      <option name="closed" value="true" />
-      <created>1700420883213</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1700420883213</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,30 +205,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="подготовил проект" />
     <MESSAGE value="категория" />
-    <MESSAGE value="Создание товара" />
-    <MESSAGE value="Обновление товара" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновление товара" />
+    <MESSAGE value="корзина и вишлист" />
+    <MESSAGE value="корзина фикс" />
+    <MESSAGE value="фикс сохранения" />
+    <option name="LAST_COMMIT_MESSAGE" value="фикс сохранения" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="40" />
+          <line>123</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <pin-to-top-manager>
-      <pinned-members>
-        <PinnedItemInfo parentTag="com.example.onlineshop_site2.models.entities.Good" memberName="sizes" />
-        <PinnedItemInfo parentTag="com.example.onlineshop_site2.models.entities.Good" memberName="colors" />
-      </pinned-members>
-    </pin-to-top-manager>
   </component>
 </project>

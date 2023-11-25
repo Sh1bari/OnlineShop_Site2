@@ -6,6 +6,21 @@ jwt:
   secret: 984hg493gh0439rthr0429uruj2309yh937gc763fe87t3f89723gf
   lifetime: 60m
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: aetherium70@gmail.com
+    password: rfbn apxd tmav ikwx
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
   flyway:
     baselineOnMigrate: true
   sql:
