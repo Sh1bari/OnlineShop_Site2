@@ -54,7 +54,7 @@ public class GoodController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = GoodResDto.class))})
     })
-    @GetMapping("/category/{id}/goods")
+    @GetMapping("/goods")
     public ResponseEntity<Page<GoodResDto>> getGoods(@PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
                                                      @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page,
                                                      @RequestParam(name = "page", defaultValue = "ACTIVE")RecordState state){
