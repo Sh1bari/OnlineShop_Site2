@@ -3,6 +3,7 @@ package com.example.onlineshop_site2.controllers;
 import com.example.onlineshop_site2.models.dtos.requests.*;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
+import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
 import com.example.onlineshop_site2.services.GoodServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -176,6 +177,21 @@ public class GoodController {
         }
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
+                .body(res);
+    }
+    @Operation(summary = "Изменить позицию фото")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "гуд",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = PhotoIdRes.class))})
+    })
+    @PutMapping("/photo/{id}/moveToPos/{pos}")
+    public ResponseEntity<PhotoIdRes> updatePhoto(
+            @PathVariable(name = "id")Long id,
+            @PathVariable(name = "pos")Integer pos){
+        PhotoIdRes res = goodService.updatePhotoPos(id, pos);
+        return ResponseEntity
+                .status(HttpStatus.OK)
                 .body(res);
     }
 

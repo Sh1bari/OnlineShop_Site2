@@ -166,6 +166,15 @@ public class GoodServiceImpl implements GoodService {
         byte[] res = getFileByPath(photo.getPath());
         return res;
     }
+
+
+    public PhotoIdRes updatePhotoPos(Long id ,Integer pos) {
+        Photo photo = photoRepo.findById(id)
+                .orElseThrow(()->new PhotoNotFoundException(id));
+        photo.setPosition(pos);
+        photoRepo.save(photo);
+        return PhotoIdRes.mapFromEntity(photo);
+    }
     @Transactional
     public GoodResDto putSizes(Long id, GoodAddSizeReq req){
         Good existingGood = goodRepo.findById(id)
