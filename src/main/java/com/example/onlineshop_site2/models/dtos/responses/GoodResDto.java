@@ -6,6 +6,7 @@ import com.example.onlineshop_site2.models.entities.Color;
 import com.example.onlineshop_site2.models.entities.Good;
 import com.example.onlineshop_site2.models.entities.Photo;
 import com.example.onlineshop_site2.models.enums.ColorType;
+import com.example.onlineshop_site2.models.enums.RecordState;
 import com.example.onlineshop_site2.models.enums.SizeType;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,8 @@ public class GoodResDto {
     private String description;
 
     private String compound;
+
+    private RecordState state;
     private Double cost;
 
     private BackColorDtoRes backColor;
@@ -68,6 +71,7 @@ public class GoodResDto {
                 .id(goodEntity.getId())
                 .cost(goodEntity.getCost())
                 .name(goodEntity.getName())
+                .state(goodEntity.getState())
                 .description(goodEntity.getDescription())
                 .compound(goodEntity.getCompound())
                 .backColor(backColor)

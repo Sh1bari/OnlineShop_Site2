@@ -19,14 +19,15 @@ public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Integer position;
+
+    private String path;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "good_id")
     private Good good;
 
-    @OneToMany(mappedBy = "photo", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
-    private List<CompressedPhoto> compressedPhotos;
 
 }

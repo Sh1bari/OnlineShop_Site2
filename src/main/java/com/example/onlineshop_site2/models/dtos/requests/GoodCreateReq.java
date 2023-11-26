@@ -43,7 +43,7 @@ public class GoodCreateReq {
                 .backColor(backColor.mapToEntity())
                 .colors(colors.stream().map(o->o.mapToEntity()).toList())
                 .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
-                .state(RecordState.ACTIVE)
+                .state(RecordState.DRAFT)
                 .build();
         build.getColors().forEach(o->o.setGood(build));
         build.getSizes().forEach(o->{

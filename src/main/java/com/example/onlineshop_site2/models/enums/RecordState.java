@@ -8,6 +8,7 @@ import lombok.*;
  * @author Vladimir Krasnov
  */
 public enum RecordState {
+    DRAFT,
     ACTIVE,
     DELETED
 }

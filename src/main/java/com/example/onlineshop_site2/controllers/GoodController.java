@@ -15,10 +15,13 @@ import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -98,6 +101,81 @@ public class GoodController {
         GoodResDto res = goodService.updateGood(id, req);
         return ResponseEntity
                 .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @Operation(summary = "Активировать товар")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "гуд",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @PostMapping("/good/{id}/activate")
+    public ResponseEntity<GoodResDto> activateGood(
+            @PathVariable(name = "id")Long id){
+        GoodResDto res = goodService.activateGood(id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @Operation(summary = "Удалить товар")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "гуд",
+                    content = {@Content(mediaType = "application/json")})
+    })
+    @DeleteMapping("/good/{id}")
+    public ResponseEntity<GoodResDto> deleteGood(
+            @PathVariable(name = "id")Long id){
+        GoodResDto res = goodService.deleteGood(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
+
+    @Operation(summary = "Добавить фото к товару")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "гуд",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @PostMapping("/good/{id}/photo")
+    public ResponseEntity<GoodResDto> addPhotoToGood(
+            @RequestParam(value = "file", required = true) MultipartFile file,
+            @PathVariable(name = "id")Long id,
+            @RequestParam(value = "position") Integer position){
+        GoodResDto res = goodService.addPhotoToGood(id, file, position);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
+    @Operation(summary = "Удалить фото")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "гуд",
+                    content = {@Content(mediaType = "application/json")})
+    })
+    @DeleteMapping("/photo/{id}")
+    public ResponseEntity<?> deletePhoto(
+            @PathVariable(name = "id")Long id){
+        goodService.deletePhoto(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
+
+    @Operation(summary = "Получить фото")
+    @PostMapping("/photo/{id}")
+    public ResponseEntity<byte[]> getPhoto(
+            @PathVariable(name = "id")Long id){
+        byte[] res = goodService.getPhoto(id);
+        if(res == null){
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .build();
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
                 .body(res);
     }
 

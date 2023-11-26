@@ -1,5 +1,6 @@
 package com.example.onlineshop_site2.services;
 
+import com.example.onlineshop_site2.exceptions.PhotoNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.GoodAddColorReq;
 import com.example.onlineshop_site2.models.dtos.requests.GoodAddSizeReq;
 import com.example.onlineshop_site2.models.dtos.requests.GoodUpdateReq;
@@ -9,19 +10,26 @@ import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
+import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
 import com.example.onlineshop_site2.models.entities.*;
 import com.example.onlineshop_site2.models.enums.ColorType;
+import com.example.onlineshop_site2.models.enums.RecordState;
 import com.example.onlineshop_site2.repositories.*;
 import com.example.onlineshop_site2.services.service.GoodService;
+import com.example.onlineshop_site2.services.service.MinioService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,6 +79,18 @@ public class GoodServiceImpl implements GoodService {
         return GoodResDto.mapFromEntity(res);
     }
 
+    public byte[] getFileByPath(String path){
+        InputStream in = minioService.getFile(path);
+        byte[] res = null;
+        try {
+            res = IOUtils.toByteArray(in);
+        } catch (IOException e) {
+            // Обработка ошибки, если не удается прочитать изображение
+            e.printStackTrace();
+        }
+        return res;
+    }
+
     @Override
     public GoodResDto updateGood(Long id, GoodUpdateReq req) {
         // Найти товар по id
@@ -100,6 +120,52 @@ public class GoodServiceImpl implements GoodService {
         return GoodResDto.mapFromEntity(existingGood);
     }
 
+    @Override
+    public GoodResDto activateGood(Long id) {
+        Good good = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        good.setState(RecordState.ACTIVE);
+        goodRepo.save(good);
+        return GoodResDto.mapFromEntity(good);
+    }
+
+
+    public GoodResDto deleteGood(Long id) {
+        Good good = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        good.setState(RecordState.DELETED);
+        goodRepo.save(good);
+        return GoodResDto.mapFromEntity(good);
+    }
+    private final MinioService minioService;
+    public GoodResDto addPhotoToGood(Long id, MultipartFile file, Integer position) {
+        Good good = goodRepo.findById(id)
+                .orElseThrow(() -> new GoodNotFoundException(id));
+        Photo photo = new Photo();
+        photo.setGood(good);
+        photo.setPosition(position);
+        photo.setPath(minioService.saveFile(file));
+        good.getPhotos().add(photo);
+        photoRepo.save(photo);
+        goodRepo.save(good);
+        return GoodResDto.mapFromEntity(good);
+    }
+
+
+    public boolean deletePhoto(Long id) {
+        Photo photo = photoRepo.findById(id)
+                        .orElseThrow(()->new PhotoNotFoundException(id));
+        minioService.deleteFile("photos",photo.getPath());
+        photoRepo.deleteByIdNative(id);
+        return true;
+    }
+
+    public byte[] getPhoto(Long id) {
+        Photo photo = photoRepo.findById(id)
+                .orElseThrow(()->new PhotoNotFoundException(id));
+        byte[] res = getFileByPath(photo.getPath());
+        return res;
+    }
     @Transactional
     public GoodResDto putSizes(Long id, GoodAddSizeReq req){
         Good existingGood = goodRepo.findById(id)
@@ -114,6 +180,7 @@ public class GoodServiceImpl implements GoodService {
     }
     @PersistenceContext
     private EntityManager entityManager;
+    private final PhotoRepo photoRepo;
 
     @Transactional
     public GoodResDto putColors(Long id, GoodAddColorReq req) throws InterruptedException {

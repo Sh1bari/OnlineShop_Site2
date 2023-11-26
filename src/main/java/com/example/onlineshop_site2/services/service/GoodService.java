@@ -15,5 +15,7 @@ public interface GoodService {
     Integer getAmountOfGoodPages();
     GoodResDto createGood(GoodCreateReq req);
     GoodResDto updateGood(Long id, GoodUpdateReq req);
+
+    GoodResDto activateGood(Long id);
     List<CategoryIdRes> connectCategoryToGood(Long id, List<CategoryIdReq> req);
 }
