@@ -4,6 +4,7 @@ import com.example.onlineshop_site2.models.dtos.requests.*;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
 import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
+import com.example.onlineshop_site2.models.enums.RecordState;
 import com.example.onlineshop_site2.services.GoodServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -46,6 +47,20 @@ public class GoodController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(goodService.getGoodsByCategoryIdWithPage(id, page));
+    }
+    @Operation(summary = "Получить товары")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Все товары",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GoodResDto.class))})
+    })
+    @GetMapping("/category/{id}/goods")
+    public ResponseEntity<Page<GoodResDto>> getGoods(@PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
+                                                     @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page,
+                                                     @RequestParam(name = "page", defaultValue = "ACTIVE")RecordState state){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(goodService.getGoods(id, state, page));
     }
     @Operation(summary = "Получить товары по айди")
     @ApiResponses(value = {

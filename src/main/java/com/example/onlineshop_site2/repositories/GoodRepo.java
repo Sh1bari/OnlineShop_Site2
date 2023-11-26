@@ -1,6 +1,7 @@
 package com.example.onlineshop_site2.repositories;
 
 import com.example.onlineshop_site2.models.entities.Good;
+import com.example.onlineshop_site2.models.enums.RecordState;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface GoodRepo extends CrudRepository<Good, Long> {
     Page<Good> findAllByCategories_id(Long categoryId, Pageable pageable);
+    Page<Good> findAllByCategories_idAndState(Long categoryId, RecordState state, Pageable pageable);
     long count();
     Page<Good> findByCategoriesIsEmpty(Pageable pageable);
 

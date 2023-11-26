@@ -52,6 +52,12 @@ public class GoodServiceImpl implements GoodService {
         Page<Good> goodPage = goodRepo.findAllByCategories_id(categoryId, pageable);
         return goodPage.map(GoodResDto::mapFromEntity);
     }
+
+    public Page<GoodResDto> getGoods(Long categoryId,RecordState state, Integer page) {
+        Pageable pageable = PageRequest.of(page, limit);
+        Page<Good> goodPage = goodRepo.findAllByCategories_idAndState(categoryId,state, pageable);
+        return goodPage.map(GoodResDto::mapFromEntity);
+    }
     public Page<GoodResDto> getFreeGoodsPage(Integer page) {
         Pageable pageable = PageRequest.of(page, limit);
         Page<Good> goodPage = goodRepo.findByCategoriesIsEmpty(pageable);
