@@ -165,7 +165,7 @@ public class GoodController {
     }
 
     @Operation(summary = "Получить фото")
-    @PostMapping("/photo/{id}")
+    @GetMapping("/photo/{id}")
     public ResponseEntity<byte[]> getPhoto(
             @PathVariable(name = "id")Long id){
         byte[] res = goodService.getPhoto(id);
