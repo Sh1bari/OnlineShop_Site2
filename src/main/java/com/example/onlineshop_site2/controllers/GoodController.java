@@ -43,10 +43,11 @@ public class GoodController {
     })
     @GetMapping("/category/{id}/goods")
     public ResponseEntity<Page<GoodResDto>> getGoods(@PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
-                                                  @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page){
+                                                  @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page,
+                                                     @RequestParam(name = "state", defaultValue = "ACTIVE")RecordState state){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(goodService.getGoodsByCategoryIdWithPage(id, page));
+                .body(goodService.getGoodsByCategoryIdWithPage(id,state, page));
     }
     @Operation(summary = "Получить товары")
     @ApiResponses(value = {
@@ -55,12 +56,11 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @GetMapping("/goods")
-    public ResponseEntity<Page<GoodResDto>> getGoods(@PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
-                                                     @RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page,
-                                                     @RequestParam(name = "page", defaultValue = "ACTIVE")RecordState state){
+    public ResponseEntity<Page<GoodResDto>> getGoods(@RequestParam(name = "page", defaultValue = "0")@Min(value = 0, message = "Page cant be less than 0") Integer page,
+                                                     @RequestParam(name = "state", defaultValue = "ACTIVE")RecordState state){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(goodService.getGoods(id, state, page));
+                .body(goodService.getGoods(state, page));
     }
     @Operation(summary = "Получить товары по айди")
     @ApiResponses(value = {

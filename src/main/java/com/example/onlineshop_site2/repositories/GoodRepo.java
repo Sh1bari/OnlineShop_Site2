@@ -13,8 +13,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface GoodRepo extends CrudRepository<Good, Long> {
-    Page<Good> findAllByCategories_id(Long categoryId, Pageable pageable);
-    Page<Good> findAllByCategories_idAndState(Long categoryId, RecordState state, Pageable pageable);
+    Page<Good> findAllByCategories_idAndState(Long categoryId,RecordState state, Pageable pageable);
+    Page<Good> findAllByState(RecordState state, Pageable pageable);
     long count();
     Page<Good> findByCategoriesIsEmpty(Pageable pageable);
 
