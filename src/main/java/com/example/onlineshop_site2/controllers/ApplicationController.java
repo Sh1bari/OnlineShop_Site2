@@ -3,6 +3,7 @@ package com.example.onlineshop_site2.controllers;
 import com.example.onlineshop_site2.models.dtos.CategoryDto;
 import com.example.onlineshop_site2.models.dtos.requests.CategoryCreateReq;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
+import com.example.onlineshop_site2.models.dtos.requests.UpdateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.responses.ApplicationRes;
 import com.example.onlineshop_site2.models.enums.ApplicationStatus;
 import com.example.onlineshop_site2.repositories.ApplicationRepo;
@@ -92,4 +93,20 @@ public class ApplicationController {
                 .body(res);
     }
 
+    @Operation(summary = "Изменить админ коммент")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "гуд",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApplicationRes.class))})
+    })
+    @PutMapping("/{id}")
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<ApplicationRes> updateApplication(
+            @PathVariable(name = "id") Long id,
+            @RequestBody @Valid UpdateApplicationReq req){
+        ApplicationRes res = applicationService.updateApplication(id, req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
 }

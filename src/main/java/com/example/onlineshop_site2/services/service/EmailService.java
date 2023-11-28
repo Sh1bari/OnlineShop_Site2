@@ -50,17 +50,53 @@ public class EmailService {
         }
     }
 
-    public boolean sendCode(String email){
+    public boolean sendRegCode(String email){
         Mail mail = mailRepo.findByEmail(email).orElse(null);
         if(mail == null){
             return false;
         }else {
-            sendCodeEmail(email, mail.getCode());
+            sendRegCodeEmail(email, mail.getCode());
             return true;
         }
     }
 
-    private void sendCodeEmail(String to, String code){
+    public boolean sendPasCode(String email){
+        Mail mail = mailRepo.findByEmail(email).orElse(null);
+        if(mail == null){
+            return false;
+        }else {
+            sendPasCodeEmail(email, mail.getCode());
+            return true;
+        }
+    }
+
+    public boolean changePassword(String email){
+        createCodeDB(email);
+        return true;
+    }
+
+    private void sendPasCodeEmail(String to, String code){
+        String htmlMsg = "<html>"
+                + "<head>"
+                + "<style>"
+                + "body {font-family: 'Arial', sans-serif;}"
+                + "h2 {color: #3498db;}"
+                + "p {color: #555;}"
+                + "strong {color: #3498db;}"
+                + "</style>"
+                + "</head>"
+                + "<body>"
+                + "<div style='padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>"
+                + "<h2>Здравствуйте!</h2>"
+                + "<p>Для смены пароля, пожалуйста, введите следующий код подтверждения:</p>"
+                + "<p style='font-size: 24px;'><strong>" + code + "</strong></p>"
+                + "</div>"
+                + "</body>"
+                + "</html>";
+        sendEmail(to, "Регистрация на Aetherium", htmlMsg);
+    }
+
+    private void sendRegCodeEmail(String to, String code){
         String htmlMsg = "<html>"
                 + "<head>"
                 + "<style>"

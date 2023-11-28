@@ -1,6 +1,7 @@
 package com.example.onlineshop_site2.controllers;
 
 import com.example.onlineshop_site2.models.dtos.*;
+import com.example.onlineshop_site2.models.dtos.requests.ChangePasswordReq;
 import com.example.onlineshop_site2.models.dtos.requests.CodeReq;
 import com.example.onlineshop_site2.services.security.SecurityAuthService;
 import com.example.onlineshop_site2.services.service.EmailService;
@@ -60,14 +61,14 @@ public class AuthController {
 
     private final EmailService emailService;
 
-    @Operation(summary = "Отправить код")
+    @Operation(summary = "Отправить код для регистрации")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Отправлено"),
             @ApiResponse(responseCode = "404", description = "Не отправлено")
     })
-    @PostMapping("/sendCode")
+    @PostMapping("/sendRegCode")
     public ResponseEntity<?> sendCode(@RequestBody @Valid CodeReq req) {
-        if(emailService.sendCode(req.getEmail())){
+        if(emailService.sendRegCode(req.getEmail())){
             return ResponseEntity
                     .status(HttpStatus.OK)
                     .build();
@@ -84,11 +85,58 @@ public class AuthController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserDto.class))})
     })
-    @PostMapping("/checkCode/{code}")
+    @PostMapping("/checkRegCode/{code}")
     public ResponseEntity<?> checkCode(
             @RequestBody @Valid RegistrationUserDto registrationUserDto,
             @PathVariable(name = "code")String code) {
         return authService.confirmCode(registrationUserDto, code);
     }
 
+    @Operation(summary = "Создать код на смену пароля")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Успешно",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UserDto.class))})
+    })
+    @PostMapping("/password/change")
+    public ResponseEntity<?> changePassword(@RequestBody @Valid CodeReq req) {
+        if(emailService.changePassword(req.getEmail())){
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .build();
+        }else {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
+        }
+    }
+
+    @Operation(summary = "Отправить код для смены пароля")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Отправлено"),
+            @ApiResponse(responseCode = "404", description = "Не отправлено")
+    })
+    @PostMapping("/sendPasCode")
+    public ResponseEntity<?> sendPasCode(@RequestBody @Valid CodeReq req) {
+        if(emailService.sendPasCode(req.getEmail())){
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .build();
+        }else {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
+        }
+    }
+
+    @Operation(summary = "Проверить код и сменить пароль")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Успешно")
+    })
+    @PostMapping("/checkPasCode/{code}")
+    public ResponseEntity<?> checkPasCode(
+            @RequestBody @Valid ChangePasswordReq req,
+            @PathVariable(name = "code")String code) {
+        return authService.confirmPasCode(req, code);
+    }
 }

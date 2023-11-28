@@ -3,6 +3,7 @@ package com.example.onlineshop_site2.services.service;
 import com.example.onlineshop_site2.exceptions.ApplicationNotFoundException;
 import com.example.onlineshop_site2.exceptions.UserNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
+import com.example.onlineshop_site2.models.dtos.requests.UpdateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.responses.ApplicationRes;
 import com.example.onlineshop_site2.models.entities.Application;
 import com.example.onlineshop_site2.models.entities.GoodItem;
@@ -47,6 +48,20 @@ public class ApplicationService {
         application.setClientComment(req.getClientComment());
         applicationRepo.save(application);
 
+        ApplicationRes res = ApplicationRes.mapFromEntity(application);
+        return res;
+    }
+
+    public ApplicationRes updateApplication(Long id, UpdateApplicationReq req){
+        Application application = applicationRepo.findById(id)
+                .orElseThrow(()->new ApplicationNotFoundException(id));
+        if(!req.getAdminComment().isEmpty()){
+            application.setAdminComment(req.getAdminComment());
+        }
+        if(req.getStatus() != null){
+            application.setStatus(req.getStatus());
+        }
+        applicationRepo.save(application);
         ApplicationRes res = ApplicationRes.mapFromEntity(application);
         return res;
     }

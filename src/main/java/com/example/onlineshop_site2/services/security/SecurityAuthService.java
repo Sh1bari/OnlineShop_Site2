@@ -5,6 +5,7 @@ import com.example.onlineshop_site2.models.dtos.JwtRequest;
 import com.example.onlineshop_site2.models.dtos.JwtResponse;
 import com.example.onlineshop_site2.models.dtos.RegistrationUserDto;
 import com.example.onlineshop_site2.models.dtos.UserDto;
+import com.example.onlineshop_site2.models.dtos.requests.ChangePasswordReq;
 import com.example.onlineshop_site2.models.entities.User;
 import com.example.onlineshop_site2.services.service.EmailService;
 import com.example.onlineshop_site2.utils.JwtTokenUtils;
@@ -54,6 +55,12 @@ public class SecurityAuthService {
         emailService.checkCode(registrationUserDto.getEmail(), code);
         User user = userService.createNewUser(registrationUserDto);
         return ResponseEntity.ok(new UserDto(user.getId(), user.getEmail()));
+    }
+
+    public ResponseEntity<?> confirmPasCode(@RequestBody ChangePasswordReq req,
+                                         String code){
+        emailService.checkCode(req.getEmail(), code);
+        return userService.changePas(req);
     }
 
     public ResponseEntity<?> resetToken(String username){

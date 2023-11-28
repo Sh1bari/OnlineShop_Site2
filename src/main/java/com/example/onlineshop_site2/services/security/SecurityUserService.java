@@ -1,9 +1,13 @@
 package com.example.onlineshop_site2.services.security;
+import com.example.onlineshop_site2.exceptions.AppError;
 import com.example.onlineshop_site2.models.dtos.RegistrationUserDto;
+import com.example.onlineshop_site2.models.dtos.requests.ChangePasswordReq;
 import com.example.onlineshop_site2.models.entities.User;
 import com.example.onlineshop_site2.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -70,5 +74,19 @@ public class SecurityUserService implements UserDetailsService {
         user.setPhone(registrationUserDto.getPhone());
         user.setNewsletter(registrationUserDto.getNewsletter());
         return userRepository.save(user);
+    }
+
+    public ResponseEntity<?> changePas(ChangePasswordReq req){
+        User user = findByEmail(req.getEmail()).orElseThrow(() -> new UsernameNotFoundException(
+                String.format("Пользователь '%s' не найден", req.getEmail())
+        ));
+        if(!req.getConfirmPassword().equals(req.getPassword())){
+            return new ResponseEntity<>(new AppError(HttpStatus.BAD_REQUEST.value(), "Пароли не совпадают"), HttpStatus.BAD_REQUEST);
+        }
+        user.setPassword(passwordEncoder.encode(req.getPassword()));
+        userRepository.save(user);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .build();
     }
 }

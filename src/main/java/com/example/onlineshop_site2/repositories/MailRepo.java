@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -18,4 +20,6 @@ public interface MailRepo extends CrudRepository<Mail, Long> {
 
     @Transactional
     void delete(Mail mail);
+
+    List<Mail> findAllByTimeToEndBefore(LocalDateTime time);
 }

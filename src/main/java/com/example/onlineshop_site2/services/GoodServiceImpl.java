@@ -9,6 +9,7 @@ import com.example.onlineshop_site2.exceptions.CategoryNotFoundException;
 import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
 import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
+import com.example.onlineshop_site2.models.dtos.responses.CategoryResGood;
 import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
 import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
 import com.example.onlineshop_site2.models.entities.*;
@@ -47,10 +48,15 @@ public class GoodServiceImpl implements GoodService {
 
 
     @Override
-    public Page<GoodResDto> getGoodsByCategoryIdWithPage(Long categoryId, RecordState state, Integer page) {
+    public CategoryResGood getGoodsByCategoryIdWithPage(Long categoryId, RecordState state, Integer page) {
+        CategoryResGood res = new CategoryResGood();
         Pageable pageable = PageRequest.of(page, limit);
+        Category category = categoryRepo.findById(categoryId)
+                .orElseThrow(()->new CategoryNotFoundException(categoryId));
         Page<Good> goodPage = goodRepo.findAllByCategories_idAndState(categoryId,state, pageable);
-        return goodPage.map(GoodResDto::mapFromEntity);
+        res.setGoods(goodPage.map(GoodResDto::mapFromEntity));
+        res.setName(category.getName());
+        return res;
     }
 
     public Page<GoodResDto> getGoods(RecordState state, Integer page) {
