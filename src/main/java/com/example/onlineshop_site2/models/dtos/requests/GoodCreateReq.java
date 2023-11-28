@@ -28,6 +28,7 @@ public class GoodCreateReq {
     private String compound;
 
     private BackColorDtoReq backColor;
+    private Double cost;
 
     private List<ColorDtoReq> colors;
     
@@ -44,6 +45,7 @@ public class GoodCreateReq {
                 .colors(colors.stream().map(o->o.mapToEntity()).toList())
                 .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
                 .state(RecordState.DRAFT)
+                .cost(cost)
                 .build();
         build.getColors().forEach(o->o.setGood(build));
         build.getSizes().forEach(o->{
