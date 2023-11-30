@@ -131,6 +131,7 @@
       <workItem from="1700186392084" duration="4689000" />
       <workItem from="1700517209326" duration="9811000" />
       <workItem from="1700997711981" duration="7453000" />
+      <workItem from="1701291208533" duration="1773000" />
     </task>
     <task id="LOCAL-00001" summary="подготовил проект">
       <option name="closed" value="true" />
@@ -212,7 +213,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701005714909</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="photos">
+      <option name="closed" value="true" />
+      <created>1701205787491</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701205787492</updated>
+    </task>
+    <task id="LOCAL-00012" summary="photos">
+      <option name="closed" value="true" />
+      <created>1701215456618</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701215456618</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,12 +261,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/ApplicationService.java</url>
-          <line>98</line>
+          <line>101</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/ApplicationService.java</url>
-          <line>94</line>
+          <line>97</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
