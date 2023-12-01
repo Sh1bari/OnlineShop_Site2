@@ -125,6 +125,9 @@ public class GoodServiceImpl implements GoodService {
         existingGood.setDescription(req.getDescription());
         existingGood.setCompound(req.getCompound());
         existingGood.setCost(req.getCost());
+        existingGood.setOnModel(req.getOnModel());
+        existingGood.setVendorCode(req.getVendorCode());
+        existingGood.setRecommendations(req.getRecommendations());
 
         // Сохранить изменения в базе данных
         goodRepo.save(existingGood);
