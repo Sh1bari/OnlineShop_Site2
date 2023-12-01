@@ -14,10 +14,12 @@ import lombok.*;
 @AllArgsConstructor
 public class PhotoIdRes {
     private Long id;
+    private String path;
     private Integer position;
     public static PhotoIdRes mapFromEntity(Photo photoEntity) {
         return PhotoIdRes.builder()
                 .id(photoEntity.getId())
+                .path(photoEntity.getPath())
                 .position(photoEntity.getPosition())
                 .build();
     }
