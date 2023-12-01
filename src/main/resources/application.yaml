@@ -17,8 +17,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: aetherium70@gmail.com
-    password: rfbn apxd tmav ikwx
+    username: Aethernum11Shop@gmail.com
+    password: jana rnot kprx ktaq
     properties:
       mail:
         transport:
