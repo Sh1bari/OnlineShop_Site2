@@ -130,8 +130,6 @@ public class EmailService {
             // Отправляем письмо
             javaMailSender.send(mimeMessage);
 
-            System.out.println("Письмо с кодом подтверждения отправлено успешно.");
-
         } catch (MessagingException e) {
             e.printStackTrace();
         }
