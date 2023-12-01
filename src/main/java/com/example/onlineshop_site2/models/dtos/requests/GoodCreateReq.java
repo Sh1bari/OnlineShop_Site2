@@ -27,6 +27,12 @@ public class GoodCreateReq {
 
     private String compound;
 
+    private String vendorCode;
+
+    private String recommendations;
+
+    private String onModel;
+
     private BackColorDtoReq backColor;
     private Double cost;
 
@@ -39,6 +45,9 @@ public class GoodCreateReq {
                 .name(name)
                 .description(description)
                 .compound(compound)
+                .onModel(onModel)
+                .vendorCode(vendorCode)
+                .recommendations(recommendations)
                 .categories(new ArrayList<>())
                 .photos(new ArrayList<>())
                 .backColor(backColor.mapToEntity())
