@@ -27,6 +27,12 @@ public class GoodResDto {
     private RecordState state;
     private Double cost;
 
+    private String vendorCode;
+
+    private String recommendations;
+
+    private String onModel;
+
     private BackColorDtoRes backColor;
 
     private List<CategoryIdRes> categoryIds;
@@ -70,6 +76,9 @@ public class GoodResDto {
         return GoodResDto.builder()
                 .id(goodEntity.getId())
                 .cost(goodEntity.getCost())
+                .vendorCode(goodEntity.getVendorCode())
+                .recommendations(goodEntity.getRecommendations())
+                .onModel(goodEntity.getOnModel())
                 .name(goodEntity.getName())
                 .state(goodEntity.getState())
                 .description(goodEntity.getDescription())

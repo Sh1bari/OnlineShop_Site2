@@ -4,6 +4,7 @@ import com.example.onlineshop_site2.exceptions.ApplicationNotFoundException;
 import com.example.onlineshop_site2.exceptions.UserNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.requests.UpdateApplicationReq;
+import com.example.onlineshop_site2.models.dtos.requests.UserBagIdReq;
 import com.example.onlineshop_site2.models.dtos.responses.ApplicationRes;
 import com.example.onlineshop_site2.models.entities.Application;
 import com.example.onlineshop_site2.models.entities.GoodItem;
@@ -35,6 +36,7 @@ public class ApplicationService {
     private final ApplicationRepo applicationRepo;
     private final GoodItemRepo goodItemRepo;
     private final UserRepository userRepo;
+    private final UserService userService;
 
     private final int limit = 20;
 
@@ -47,7 +49,8 @@ public class ApplicationService {
         application.setUser(user);
         application.setClientComment(req.getClientComment());
         applicationRepo.save(application);
-
+        user.getBag().clear();
+        userRepo.save(user);
         ApplicationRes res = ApplicationRes.mapFromEntity(application);
         return res;
     }

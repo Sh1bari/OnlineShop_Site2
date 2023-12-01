@@ -27,7 +27,14 @@ public class GoodCreateReq {
 
     private String compound;
 
+    private String vendorCode;
+
+    private String recommendations;
+
+    private String onModel;
+
     private BackColorDtoReq backColor;
+    private Double cost;
 
     private List<ColorDtoReq> colors;
     
@@ -38,12 +45,16 @@ public class GoodCreateReq {
                 .name(name)
                 .description(description)
                 .compound(compound)
+                .onModel(onModel)
+                .vendorCode(vendorCode)
+                .recommendations(recommendations)
                 .categories(new ArrayList<>())
                 .photos(new ArrayList<>())
                 .backColor(backColor.mapToEntity())
                 .colors(colors.stream().map(o->o.mapToEntity()).toList())
                 .sizes(sizes.stream().map(o -> o.mapToEntity()).toList())
                 .state(RecordState.DRAFT)
+                .cost(cost)
                 .build();
         build.getColors().forEach(o->o.setGood(build));
         build.getSizes().forEach(o->{

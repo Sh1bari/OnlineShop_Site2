@@ -16,6 +16,7 @@ import java.util.Optional;
  */
 public interface MailRepo extends CrudRepository<Mail, Long> {
 
+    Optional<Mail> findByEmailAndCode(String email, String code);
     Optional<Mail> findByEmail(String email);
 
     @Transactional

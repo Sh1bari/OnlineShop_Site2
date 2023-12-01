@@ -28,6 +28,12 @@ public class Good {
 
     private String compound;
 
+    private String vendorCode;
+
+    private String recommendations;
+
+    private String onModel;
+
     private Double cost;
 
     @OneToMany(mappedBy = "good", cascade = CascadeType.ALL)

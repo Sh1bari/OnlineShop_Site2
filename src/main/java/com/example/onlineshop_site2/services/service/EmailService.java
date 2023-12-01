@@ -40,14 +40,10 @@ public class EmailService {
     }
 
     public boolean checkCode(String email, String code){
-        Mail mail = mailRepo.findByEmail(email)
-                .orElseThrow(()-> new MailNotFoundException(email));
-        if (mail.getCode().equals(code)){
-            mailRepo.delete(mail);
-            return true;
-        }else {
-            throw new WrongCodeException();
-        }
+        Mail mail = mailRepo.findByEmailAndCode(email, code)
+                .orElseThrow(WrongCodeException::new);
+        mailRepo.delete(mail);
+        return true;
     }
 
     public boolean sendRegCode(String email){
