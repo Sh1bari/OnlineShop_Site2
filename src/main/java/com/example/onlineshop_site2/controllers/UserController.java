@@ -58,15 +58,6 @@ public class UserController {
     }
     private final UserRepository userRepo;
     private final RoleRepository roleRepo;
-
-    @GetMapping("/makeMeAdmin")
-    @Secured("ROLE_USER")
-    public ResponseEntity<?> make(Principal principal){
-        User user = userRepo.findByEmail(principal.getName()).get();
-        user.getRoles().add(roleRepo.findByName("ROLE_ADMIN").get());
-        userRepo.save(user);
-        return ResponseEntity.ok().build();
-    }
     @Operation(summary = "Получить инфу о юзере по айди")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "гуд",

@@ -20,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -83,6 +84,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PostMapping("/good")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> addGoodToSection(
             @RequestBody @Valid GoodCreateReq req){
         GoodResDto res = goodService.createGood(req);
@@ -112,6 +114,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PutMapping("/good/{id}/info")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> updateGoodInfo(
             @PathVariable(name = "id")Long id,
             @RequestBody @Valid GoodUpdateReq req){
@@ -128,6 +131,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PostMapping("/good/{id}/activate")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> activateGood(
             @PathVariable(name = "id")Long id){
         GoodResDto res = goodService.activateGood(id);
@@ -142,6 +146,7 @@ public class GoodController {
                     content = {@Content(mediaType = "application/json")})
     })
     @DeleteMapping("/good/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> deleteGood(
             @PathVariable(name = "id")Long id){
         GoodResDto res = goodService.deleteGood(id);
@@ -157,6 +162,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PostMapping("/good/{id}/photo")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> addPhotoToGood(
             @RequestParam(value = "file", required = true) MultipartFile file,
             @PathVariable(name = "id")Long id,
@@ -173,6 +179,7 @@ public class GoodController {
                     content = {@Content(mediaType = "application/json")})
     })
     @DeleteMapping("/photo/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<?> deletePhoto(
             @PathVariable(name = "id")Long id){
         goodService.deletePhoto(id);
@@ -202,6 +209,7 @@ public class GoodController {
                             schema = @Schema(implementation = PhotoIdRes.class))})
     })
     @PutMapping("/photo/{id}/moveToPos/{pos}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<PhotoIdRes> updatePhoto(
             @PathVariable(name = "id")Long id,
             @PathVariable(name = "pos")Integer pos){
@@ -218,6 +226,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PutMapping("/good/{id}/sizes")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> updateGoodSizes(
             @PathVariable(name = "id")Long id,
             @RequestBody @Valid GoodAddSizeReq req){
@@ -234,6 +243,7 @@ public class GoodController {
                             schema = @Schema(implementation = GoodResDto.class))})
     })
     @PutMapping("/good/{id}/colors")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<GoodResDto> updateGoodColors(
             @PathVariable(name = "id")Long id,
             @RequestBody @Valid GoodAddColorReq req) throws InterruptedException {
@@ -251,6 +261,7 @@ public class GoodController {
                             schema = @Schema(implementation = CategoryIdRes.class))})
     })
     @PutMapping("/good/{id}/categories")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<List<CategoryIdRes>> connectCategoryToGood(
             @PathVariable(name = "id") Long id,
             @RequestBody List<CategoryIdReq> req){
