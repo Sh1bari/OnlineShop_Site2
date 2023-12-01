@@ -89,7 +89,7 @@ public class EmailService {
                 + "</div>"
                 + "</body>"
                 + "</html>";
-        sendEmail(to, "Регистрация на Aetherium", htmlMsg);
+        sendEmail(to, "Регистрация на Aeternum", htmlMsg);
     }
 
     private void sendRegCodeEmail(String to, String code){
@@ -111,7 +111,7 @@ public class EmailService {
                 + "</div>"
                 + "</body>"
                 + "</html>";
-        sendEmail(to, "Регистрация на Aetherium", htmlMsg);
+        sendEmail(to, "Регистрация на Aeternum", htmlMsg);
     }
 
     private void sendEmail(String to, String subject, String text) {
@@ -120,7 +120,7 @@ public class EmailService {
 
         try {
             // Задаем адрес отправителя, получателя и тему письма
-            helper.setFrom("aetherium70@gmail.com");
+            helper.setFrom("Aeternum11Shop@gmail.com");
             helper.setTo(to);
             helper.setSubject(subject);
 
