@@ -175,13 +175,6 @@ public class GoodServiceImpl implements GoodService {
         return true;
     }
 
-    public byte[] getPhoto(Long id) {
-        Photo photo = photoRepo.findById(id)
-                .orElseThrow(()->new PhotoNotFoundException(id));
-        byte[] res = getFileByPath(photo.getPath());
-        return res;
-    }
-
 
     public PhotoIdRes updatePhotoPos(Long id ,Integer pos) {
         Photo photo = photoRepo.findById(id)

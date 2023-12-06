@@ -187,21 +187,6 @@ public class GoodController {
                 .status(HttpStatus.NO_CONTENT)
                 .build();
     }
-
-    @Operation(summary = "Получить фото")
-    @GetMapping("/photo/{id}")
-    public ResponseEntity<byte[]> getPhoto(
-            @PathVariable(name = "id")Long id){
-        byte[] res = goodService.getPhoto(id);
-        if(res == null){
-            return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
-                    .build();
-        }
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(res);
-    }
     @Operation(summary = "Изменить позицию фото")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "гуд",

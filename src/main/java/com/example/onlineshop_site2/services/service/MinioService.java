@@ -1,6 +1,9 @@
 package com.example.onlineshop_site2.services.service;
 
 import com.example.onlineshop_site2.exceptions.CantSaveFileException;
+import com.example.onlineshop_site2.exceptions.PhotoNotFoundException;
+import com.example.onlineshop_site2.models.entities.Photo;
+import com.example.onlineshop_site2.repositories.PhotoRepo;
 import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
@@ -28,6 +31,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MinioService{
     private final MinioClient minioClient;
+    private final PhotoRepo photoRepo;
+    public boolean deletePhoto(Long id) {
+        Photo photo = photoRepo.findById(id)
+                .orElseThrow(()->new PhotoNotFoundException(id));
+        deleteFile("photos",photo.getPath());
+        photoRepo.deleteByIdNative(id);
+        return true;
+    }
     public InputStream getFile(String objectName) {
         try {
             return minioClient.getObject(
