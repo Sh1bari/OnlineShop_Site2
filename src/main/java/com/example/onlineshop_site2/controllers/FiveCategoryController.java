@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,6 +51,7 @@ public class FiveCategoryController {
                             schema = @Schema(implementation = FiveCategoryItemRes.class))})
     })
     @PutMapping("/fiveCategory/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<FiveCategoryItemRes> getById(
             @PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
             @RequestBody FiveCategoryUpdateReq req){
@@ -64,6 +66,7 @@ public class FiveCategoryController {
             @ApiResponse(responseCode = "200")
     })
     @PostMapping("/fiveCategory/{id}/photo")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<?> updatePhoto(
             @RequestParam(value = "file", required = true) MultipartFile file,
             @PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id){

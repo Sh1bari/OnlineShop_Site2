@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,6 +47,7 @@ public class FirstPageController {
                             schema = @Schema(implementation = FirstPageItemRes.class))})
     })
     @PutMapping("/firstPage")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<FirstPageItemRes> updateItem(@RequestBody FirstPageReq req){
         FirstPageItemRes res = firstPageService.updateItem(req);
         return ResponseEntity
@@ -58,6 +60,7 @@ public class FirstPageController {
             @ApiResponse(responseCode = "200")
     })
     @PostMapping("/firstPage/photo")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<?> updatePhoto(@RequestParam(value = "file", required = true) MultipartFile file){
         firstPageService.updatePhoto(file);
         return ResponseEntity
