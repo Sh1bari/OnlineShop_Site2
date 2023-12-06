@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/exceptions/FiveCategoryNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/requests/FiveCategoryUpdateReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/FiveCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/FiveCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/FiveCategoryItemRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/FiveCategoryItemRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/FiveCategoryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/repositories/FiveCategoryRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/FiveCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/service/FiveCategoryService.java" afterDir="false" />
-    </list>
+    <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,8 +38,8 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="05e9dca0-b40b-4bfb-9dd1-aff19ad90331" />
-        <option name="url" value="https://github.com/Sh1bari/OnlineShop_Site2.git" />
+        <option name="accountId" value="e51fb14f-da1d-4a8b-898d-63dae31edae9" />
+        <option name="url" value="https://github.com/Sh1bari/OnlineShop_Site2" />
       </UrlAndAccount>
     </option>
   </component>
@@ -281,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701860123561</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="new">
+      <option name="closed" value="true" />
+      <created>1701862486925</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1701862486925</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +306,8 @@
     <MESSAGE value="фикс сохранения" />
     <MESSAGE value="mail" />
     <MESSAGE value="photos" />
-    <option name="LAST_COMMIT_MESSAGE" value="photos" />
+    <MESSAGE value="new" />
+    <option name="LAST_COMMIT_MESSAGE" value="new" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

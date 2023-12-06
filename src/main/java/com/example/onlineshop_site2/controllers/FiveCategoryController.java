@@ -43,6 +43,12 @@ public class FiveCategoryController {
                 .body(res);
     }
 
+    @Operation(summary = "Обновить запись по id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Application found",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = FiveCategoryItemRes.class))})
+    })
     @PutMapping("/fiveCategory/{id}")
     public ResponseEntity<FiveCategoryItemRes> getById(
             @PathVariable(value = "id")@Min(value = 1L, message = "Id cant be less than 1") Long id,
@@ -53,6 +59,10 @@ public class FiveCategoryController {
                 .body(res);
     }
 
+    @Operation(summary = "Обновить фото по id записи")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200")
+    })
     @PostMapping("/fiveCategory/{id}/photo")
     public ResponseEntity<?> updatePhoto(
             @RequestParam(value = "file", required = true) MultipartFile file,
