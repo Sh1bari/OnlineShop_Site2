@@ -15,6 +15,8 @@ import lombok.*;
 public class FiveCategoryItemRes {
     private Long id;
 
+    private Long photoId;
+
     private String path;
 
     private Long categoryId;
@@ -24,6 +26,8 @@ public class FiveCategoryItemRes {
     public static FiveCategoryItemRes mapFromEntity(FiveCategory o){
         FiveCategoryItemRes builder = FiveCategoryItemRes.builder()
                 .id(o.getId())
+                .photoId(o.getPhoto() != null ? o.getPhoto().getId() : null)
+                .categoryId(o.getCategory().getId())
                 .path(o.getPhoto() != null ? o.getPhoto().getPath() : null)
                 .categoryId(o.getCategory().getId())
                 .categoryName(o.getCategory() != null ? o.getCategory().getName() : null)
