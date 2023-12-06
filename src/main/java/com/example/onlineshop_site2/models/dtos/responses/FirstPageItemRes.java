@@ -28,7 +28,7 @@ public class FirstPageItemRes{
           .name(o.getName())
           .description(o.getDescription())
           .id(o.getId())
-          .goodId(o.getGood().getId())
+          .goodId(o.getGood() != null ? o.getGood().getId() : null)
           .path(o.getPhoto().getPath())
           .build();
   return builder;
