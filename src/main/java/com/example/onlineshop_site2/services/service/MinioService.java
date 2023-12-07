@@ -155,7 +155,7 @@ public class MinioService{
     }
 
     private static String getCurrentDateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy-HH-mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy-HH-mm-ss");
         return dateFormat.format(new Date());
     }
 }
