@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +24,12 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Vladimir Krasnov
  */
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class FirstPageController {
 
     private final FirstPageService firstPageService;
-    private final MinioService minioService;
-
-    @PostMapping("/test")
-    public void get(@RequestParam(value = "file", required = true) MultipartFile file){
-        minioService.saveTestFile(file);
-    }
     @Operation(summary = "Получить первую страницу")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Application found",
