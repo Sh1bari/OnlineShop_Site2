@@ -29,7 +29,7 @@ public class FirstPageController {
     private final FirstPageService firstPageService;
     private final MinioService minioService;
 
-    @GetMapping("/test")
+    @PostMapping("/test")
     public void get(@RequestParam(value = "file", required = true) MultipartFile file){
         minioService.saveTestFile(file);
     }
