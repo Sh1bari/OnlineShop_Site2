@@ -106,6 +106,39 @@ public class MinioService{
         }
     }
 
+    public String saveTestFile(MultipartFile file) {
+        try {
+            // Генерируем уникальное имя файла
+            String uniqueFileName = generateUniqueFileName(file.getOriginalFilename());
+
+            // Открываем поток для загрузки файла в MinIO
+            InputStream fileStream = file.getInputStream();
+
+            // Сохраняем файл в MinIO
+            try {
+                minioClient.putObject(
+                        PutObjectArgs.builder()
+                                .bucket("test")
+                                .object(uniqueFileName)
+                                .stream(fileStream, file.getSize(), -1)
+                                .contentType(file.getContentType())
+                                .build()
+                );
+            }catch (Exception e){
+                throw new CantSaveFileException();
+            }
+
+            // Закрываем поток
+            fileStream.close();
+
+            // Возвращаем уникальное имя файла
+            return uniqueFileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static String generateUniqueFileName(String name) {
         String currentDate = getCurrentDateTime();
         // Генерируем UUID и добавляем оригинальное расширение файла

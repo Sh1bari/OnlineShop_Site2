@@ -4,6 +4,7 @@ import com.example.onlineshop_site2.models.dtos.requests.FirstPageReq;
 import com.example.onlineshop_site2.models.dtos.responses.FirstPageItemRes;
 import com.example.onlineshop_site2.models.dtos.responses.FiveCategoryItemRes;
 import com.example.onlineshop_site2.services.service.FirstPageService;
+import com.example.onlineshop_site2.services.service.MinioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,6 +27,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class FirstPageController {
 
     private final FirstPageService firstPageService;
+    private final MinioService minioService;
+
+    @GetMapping("/test")
+    public void get(@RequestParam(value = "file", required = true) MultipartFile file){
+        minioService.saveTestFile(file);
+    }
     @Operation(summary = "Получить первую страницу")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Application found",
