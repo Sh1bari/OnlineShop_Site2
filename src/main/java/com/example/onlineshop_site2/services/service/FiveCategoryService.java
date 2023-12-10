@@ -2,6 +2,7 @@ package com.example.onlineshop_site2.services.service;
 
 import com.example.onlineshop_site2.exceptions.CategoryNotFoundException;
 import com.example.onlineshop_site2.exceptions.FiveCategoryNotFoundException;
+import com.example.onlineshop_site2.exceptions.PhotoNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.FiveCategoryUpdateReq;
 import com.example.onlineshop_site2.models.dtos.responses.FiveCategoryItemRes;
 import com.example.onlineshop_site2.models.entities.Category;
@@ -50,9 +51,13 @@ public class FiveCategoryService {
     public boolean updatePhoto(Long id, MultipartFile file){
         FiveCategory fiveCategory = fiveCategoryRepo.findById(id)
                 .orElseThrow(()->new FiveCategoryNotFoundException(id));
-        minioService.deletePhoto(fiveCategory.getPhoto().getId());
-        fiveCategory.getPhoto().setPath(minioService.saveFile(file));
-        fiveCategoryRepo.save(fiveCategory);
+        if(fiveCategory.getPhoto().getPath() != null) {
+            minioService.deleteFile("photos", fiveCategory.getPhoto().getPath());
+        }
+        Photo photo = photoRepo.findById(fiveCategory.getPhoto().getId())
+                        .orElseThrow(()->new PhotoNotFoundException(fiveCategory.getPhoto().getId()));
+        photo.setPath(minioService.saveFile(file));
+        photoRepo.save(photo);
         return true;
     }
 

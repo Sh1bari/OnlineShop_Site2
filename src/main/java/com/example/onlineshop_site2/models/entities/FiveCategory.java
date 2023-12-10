@@ -19,7 +19,7 @@ public class FiveCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "photo_id")
     private Photo photo;
 
