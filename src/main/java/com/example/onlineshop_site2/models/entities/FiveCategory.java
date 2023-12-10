@@ -23,7 +23,7 @@ public class FiveCategory {
     @JoinColumn(name = "photo_id")
     private Photo photo;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
 

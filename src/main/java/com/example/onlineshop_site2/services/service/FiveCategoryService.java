@@ -43,7 +43,8 @@ public class FiveCategoryService {
         Category category = categoryRepo.findById(req.getCategoryId())
                 .orElseThrow(()-> new CategoryNotFoundException(req.getCategoryId()));
         fiveCategory.setCategory(category);
-        return FiveCategoryItemRes.mapFromEntity(fiveCategoryRepo.save(fiveCategory));
+        FiveCategory res = fiveCategoryRepo.save(fiveCategory);
+        return FiveCategoryItemRes.mapFromEntity(res);
     }
 
     public boolean updatePhoto(Long id, MultipartFile file){
