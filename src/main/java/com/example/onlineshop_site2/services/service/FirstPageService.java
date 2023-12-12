@@ -1,10 +1,12 @@
 package com.example.onlineshop_site2.services.service;
 
 import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
+import com.example.onlineshop_site2.exceptions.PhotoNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.FirstPageReq;
 import com.example.onlineshop_site2.models.dtos.responses.FirstPageItemRes;
 import com.example.onlineshop_site2.models.entities.FirstPage;
 import com.example.onlineshop_site2.models.entities.Good;
+import com.example.onlineshop_site2.models.entities.Photo;
 import com.example.onlineshop_site2.repositories.FirstPageRepo;
 import com.example.onlineshop_site2.repositories.GoodRepo;
 import com.example.onlineshop_site2.repositories.PhotoRepo;
@@ -42,9 +44,13 @@ public class FirstPageService {
 
     public boolean updatePhoto(MultipartFile file){
         FirstPage page = firstPageRepo.findById(1L).get();
-        minioService.deletePhoto(page.getPhoto().getId());
-        page.getPhoto().setPath(minioService.saveFile(file));
-        firstPageRepo.save(page);
+        if(page.getPhoto().getPath() != null) {
+            minioService.deleteFile("photos", page.getPhoto().getPath());
+        }
+        Photo photo = photoRepo.findById(page.getPhoto().getId())
+                .orElseThrow(()->new PhotoNotFoundException(page.getPhoto().getId()));
+        photo.setPath(minioService.saveFile(file));
+        photoRepo.save(photo);
         return true;
     }
 }
