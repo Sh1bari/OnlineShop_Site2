@@ -36,7 +36,7 @@ spring:
       mode: always
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://45.12.74.94:5432/OnlineShopSite2
+    url: jdbc:postgresql://localhost:5432/OnlineShopSite2
     username: root
     password: 123
   jpa:

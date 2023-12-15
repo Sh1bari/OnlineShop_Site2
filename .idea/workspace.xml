@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f66142ba-7ab0-4c02-bf9c-e88462a1c26e" name="Changes" comment="save">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/models/dtos/responses/PhotoRes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/controllers/GoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/onlineshop_site2/services/GoodServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Theke/Desktop/java/OnlineShop_Site2/src/main/java/com/example/onlineshop_site2/controllers&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Theke/Desktop/РИП/back&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -135,6 +138,9 @@
       <workItem from="1701353966948" duration="518000" />
       <workItem from="1701387474230" duration="1911000" />
       <workItem from="1701441080142" duration="6817000" />
+      <workItem from="1702512525713" duration="220000" />
+      <workItem from="1702515362898" duration="645000" />
+      <workItem from="1702670660685" duration="578000" />
     </task>
     <task id="LOCAL-00001" summary="подготовил проект">
       <option name="closed" value="true" />
@@ -312,7 +318,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702406732786</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="save">
+      <option name="closed" value="true" />
+      <created>1702415668186</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1702415668186</updated>
+    </task>
+    <task id="LOCAL-00024" summary="save">
+      <option name="closed" value="true" />
+      <created>1702415933272</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1702415933272</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,10 +1,7 @@
 package com.example.onlineshop_site2.controllers;
 
 import com.example.onlineshop_site2.models.dtos.requests.*;
-import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
-import com.example.onlineshop_site2.models.dtos.responses.CategoryResGood;
-import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
-import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
+import com.example.onlineshop_site2.models.dtos.responses.*;
 import com.example.onlineshop_site2.models.enums.RecordState;
 import com.example.onlineshop_site2.services.GoodServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
@@ -187,6 +184,28 @@ public class GoodController {
                 .status(HttpStatus.NO_CONTENT)
                 .build();
     }
+
+    @Operation(summary = "Удалить фото")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "гуд",
+                    content = {@Content(mediaType = "application/json")})
+    })
+    @PutMapping("/background")
+    public ResponseEntity<PhotoRes> updatePhoto(
+            MultipartFile file){
+        PhotoRes res = goodService.updatePhoto(file);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+    @GetMapping("/background")
+    public ResponseEntity<PhotoRes> getPhoto(){
+        PhotoRes res = goodService.getBackground();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
+    }
+
     @Operation(summary = "Изменить позицию фото")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "гуд",

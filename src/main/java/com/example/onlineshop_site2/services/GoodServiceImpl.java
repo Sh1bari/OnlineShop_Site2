@@ -8,10 +8,7 @@ import com.example.onlineshop_site2.models.dtos.requests.CategoryIdReq;
 import com.example.onlineshop_site2.exceptions.CategoryNotFoundException;
 import com.example.onlineshop_site2.exceptions.GoodNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.GoodCreateReq;
-import com.example.onlineshop_site2.models.dtos.responses.CategoryIdRes;
-import com.example.onlineshop_site2.models.dtos.responses.CategoryResGood;
-import com.example.onlineshop_site2.models.dtos.responses.GoodResDto;
-import com.example.onlineshop_site2.models.dtos.responses.PhotoIdRes;
+import com.example.onlineshop_site2.models.dtos.responses.*;
 import com.example.onlineshop_site2.models.entities.*;
 import com.example.onlineshop_site2.models.enums.ColorType;
 import com.example.onlineshop_site2.models.enums.RecordState;
@@ -164,6 +161,23 @@ public class GoodServiceImpl implements GoodService {
         photoRepo.save(photo);
         goodRepo.save(good);
         return GoodResDto.mapFromEntity(good);
+    }
+
+    public PhotoRes updatePhoto(MultipartFile file) {
+        Photo photo = photoRepo.findById(260L)
+                .orElseThrow(()->new PhotoNotFoundException(260L));
+        if(photo.getPath() != null){
+            minioService.deleteFile("photos",photo.getPath());
+        }
+        photo.setPath(minioService.saveFile(file));
+        photoRepo.save(photo);
+        return new PhotoRes(photo.getPath());
+    }
+
+    public PhotoRes getBackground(){
+        Photo photo = photoRepo.findById(260L)
+                .orElseThrow(()->new PhotoNotFoundException(260L));
+        return new PhotoRes(photo.getPath());
     }
 
 
