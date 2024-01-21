@@ -53,8 +53,6 @@ public class ApplicationService {
         application.setUser(user);
         application.setClientComment(req.getClientComment());
         applicationRepo.save(application);
-        user.getBag().clear();
-        userRepo.save(user);
         ApplicationRes res = ApplicationRes.mapFromEntity(application);
         return res;
     }

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -76,6 +77,7 @@ public class BillService {
         });
     }
 
+    @Transactional
     public BillUrlDto createBill(String email, CreateApplicationReq req) throws JsonProcessingException {
         User user = userRepo.findByEmail(email)
                 .orElseThrow(()-> new UserNotFoundException(email));
@@ -108,6 +110,8 @@ public class BillService {
         billRepo.save(bill);
 
         JsonNode rowsNodePath = jsonNode.get("confirmation").get("confirmation_url");
+        user.getBag().clear();
+        userRepo.save(user);
         return new BillUrlDto(rowsNodePath.toString());
     }
 
