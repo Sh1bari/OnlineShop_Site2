@@ -104,7 +104,7 @@ public class BillService {
         billRepo.save(bill);
 
         JsonNode rowsNodePath = jsonNode.get("confirmation").get("confirmation_url");
-        return new BillUrlDto(json.getBody());
+        return new BillUrlDto(rowsNodePath.toString());
     }
 
     private String body(String amount){
