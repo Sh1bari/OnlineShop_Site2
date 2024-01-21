@@ -27,7 +27,7 @@ public class UserBag {
     @JoinColumn(name = "good_id")
     private Good good;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "size_id")
     private Size size;
 

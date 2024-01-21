@@ -1,6 +1,7 @@
 package com.example.onlineshop_site2.services.service;
 
 import com.example.onlineshop_site2.exceptions.ApplicationNotFoundException;
+import com.example.onlineshop_site2.exceptions.BagIsEmpty;
 import com.example.onlineshop_site2.exceptions.UserNotFoundException;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.requests.UpdateApplicationReq;
@@ -45,6 +46,9 @@ public class ApplicationService {
                 .orElseThrow(()-> new UserNotFoundException(email));
 
         Set<UserBag> bag = user.getBag();
+        if(bag.isEmpty()){
+            throw new BagIsEmpty();
+        }
         Application application = mapUserBagSetToApplication(bag);
         application.setUser(user);
         application.setClientComment(req.getClientComment());
@@ -69,13 +73,18 @@ public class ApplicationService {
         return res;
     }
 
-    public Page<ApplicationRes> getMyApplications(String email, Integer page){
+    public List<ApplicationRes> getMyApplications(String email, Integer page){
         User user = userRepo.findByEmail(email)
                 .orElseThrow(()-> new UserNotFoundException(email));
 
-        Page<ApplicationRes> res = applicationRepo.findAllByUser_id(user.getId(), PageRequest.of(page,limit))
+        Page<ApplicationRes> res1 = applicationRepo.findAllByUser_id(user.getId(), PageRequest.of(page,limit))
                         .map(ApplicationRes::mapFromEntity);
-
+        List<ApplicationRes> res = new ArrayList<>();
+        res1.forEach(o->{
+            if(!o.getStatus().equals(ApplicationStatus.NOT_PAID)){
+                res.add(o);
+            }
+        });
         return res;
     }
 
@@ -111,7 +120,7 @@ public class ApplicationService {
         });
 
         application.setTime(LocalDateTime.now());
-        application.setStatus(ApplicationStatus.FREE);
+        application.setStatus(ApplicationStatus.NOT_PAID);
         application.setGoodItems(goodItems);
         return application;
     }

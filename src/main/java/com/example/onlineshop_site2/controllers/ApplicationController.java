@@ -5,9 +5,12 @@ import com.example.onlineshop_site2.models.dtos.requests.CategoryCreateReq;
 import com.example.onlineshop_site2.models.dtos.requests.CreateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.requests.UpdateApplicationReq;
 import com.example.onlineshop_site2.models.dtos.responses.ApplicationRes;
+import com.example.onlineshop_site2.models.dtos.responses.BillUrlDto;
 import com.example.onlineshop_site2.models.enums.ApplicationStatus;
 import com.example.onlineshop_site2.repositories.ApplicationRepo;
 import com.example.onlineshop_site2.services.service.ApplicationService;
+import com.example.onlineshop_site2.services.service.BillService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -41,7 +44,9 @@ public class ApplicationController {
 
     private final ApplicationService applicationService;
 
-    @Operation(summary = "Создать заявку по корзине клиента")
+    private final BillService billService;
+
+    /*@Operation(summary = "Создать заявку по корзине клиента")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "гуд",
                     content = {@Content(mediaType = "application/json",
@@ -56,6 +61,23 @@ public class ApplicationController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(res);
+    }*/
+
+    @Operation(summary = "Создать заявку по корзине клиента")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "гуд",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ApplicationRes.class))})
+    })
+    @PostMapping("")
+    @Secured("ROLE_USER")
+    public ResponseEntity<BillUrlDto> createApplication(
+            Principal principal,
+            @RequestBody CreateApplicationReq req) throws JsonProcessingException {
+        BillUrlDto res = billService.createBill(principal.getName(), req);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(res);
     }
 
     @Operation(summary = "Все заявки пользователя (пагинация)")
@@ -66,10 +88,10 @@ public class ApplicationController {
     })
     @GetMapping("")
     @Secured("ROLE_USER")
-    public ResponseEntity<Page<ApplicationRes>> getMyApplications(
+    public ResponseEntity<List<ApplicationRes>> getMyApplications(
             Principal principal,
             @RequestParam(value = "page", required = false, defaultValue = "0")Integer page){
-        Page<ApplicationRes> res = applicationService.getMyApplications(principal.getName(), page);
+        List<ApplicationRes> res = applicationService.getMyApplications(principal.getName(), page);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(res);
@@ -85,7 +107,7 @@ public class ApplicationController {
     @Secured("ROLE_ADMIN")
     public ResponseEntity<Page<ApplicationRes>> getAllApplications(
             Principal principal,
-            @RequestParam(value = "status", required = false) ApplicationStatus status,
+            @RequestParam(value = "status", required = false, defaultValue = "FREE") ApplicationStatus status,
             @RequestParam(value = "page", required = false, defaultValue = "0")Integer page){
         Page<ApplicationRes> res = applicationService.getAllApplications(status, page);
         return ResponseEntity

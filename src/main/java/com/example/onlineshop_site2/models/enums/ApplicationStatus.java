@@ -8,6 +8,7 @@ import lombok.*;
  * @author Vladimir Krasnov
  */
 public enum ApplicationStatus {
+    NOT_PAID,
     FREE,
     DENIED,
     ACCESSED
