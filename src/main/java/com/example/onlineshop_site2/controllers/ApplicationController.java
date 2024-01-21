@@ -67,7 +67,7 @@ public class ApplicationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "гуд",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ApplicationRes.class))})
+                            schema = @Schema(implementation = BillUrlDto.class))})
     })
     @PostMapping("")
     @Secured("ROLE_USER")
