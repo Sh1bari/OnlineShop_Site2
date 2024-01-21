@@ -57,16 +57,20 @@ public class BillService {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
+            try {
+                JsonNode rowsNode = jsonNode.get("status");
+                if (rowsNode.asText().equals("succeeded")) {
+                    o.setStatus("succeeded");
+                    o.getApplication().setStatus(ApplicationStatus.FREE);
+                    billRepo.save(o);
+                } else if (rowsNode.asText().equals("pending")) {
 
-            JsonNode rowsNode = jsonNode.get("status");
-            if(rowsNode.asText().equals("succeeded")){
-                o.setStatus("succeeded");
-                o.getApplication().setStatus(ApplicationStatus.FREE);
-                billRepo.save(o);
-            } else if (rowsNode.asText().equals("pending")) {
-
-            } else {
-                o.setStatus(rowsNode.asText());
+                } else {
+                    o.setStatus(rowsNode.asText());
+                    billRepo.save(o);
+                }
+            } catch (Exception e){
+                o.setStatus("cancelled");
                 billRepo.save(o);
             }
         });
